@@ -1,0 +1,171 @@
+{
+  "NODES": [
+    {
+      "label": "Trigger",
+      "type": "TRIGGER",
+      "static": true,
+      "data": {
+        "payload": {}
+      }
+    },
+    {
+      "label": "Delay",
+      "type": "DELAY",
+      "categoryType": "WAIT",
+      "data": {
+        "payload": {
+          "type": "",
+          "days": ""
+        }
+      }
+    },
+    {
+      "label": "Path",
+      "type": "PATH_BRANCH",
+      "data": {
+        "payload": {
+          "label": ""
+        }
+      }
+    },
+    {
+      "label": "",
+      "type": "EMPTY_PATH_BRANCH",
+      "static": true,
+      "data": {
+        "payload": {}
+      }
+    },
+    {
+      "label": "Action",
+      "type": "ACTION",
+      "data": {
+        "payload": {}
+      }
+    },
+    {
+      "label": "Path Rules",
+      "type": "PATH_RULES",
+      "data": {
+        "payload": {
+          "label": "",
+          "rules": [
+            {
+              "id": "DEFAULT_1",
+              "condition": [
+                {
+                  "id": "DEFAULT_CONDITION_1",
+                  "field": "",
+                  "condition": "",
+                  "text": ""
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "label": "",
+      "type": "ADD_STEP_NODE",
+      "static": true,
+      "data": {
+        "payload": {}
+      }
+    },
+    {
+      "label": "Send Text",
+      "type": "SEND_TEXT",
+      "categoryType": "OUTBOUND",
+      "data": {
+        "payload": {
+          "text": ""
+        }
+      }
+    },
+    {
+      "label": "Send Email",
+      "type": "SEND_EMAIL",
+      "categoryType": "OUTBOUND",
+      "data": {
+        "payload": {
+          "template": "",
+          "from": { "title": "", "year": null },
+          "cc": [],
+          "isCCChecked": false,
+          "bcc": [],
+          "subject": "",
+          "body": ""
+        }
+      }
+    },
+    {
+      "label": "Send Form",
+      "type": "SEND_FORM",
+      "categoryType": "OUTBOUND",
+      "data": {
+        "payload": {}
+      }
+    },
+    {
+      "label": "Send Notification",
+      "type": "SEND_NOTIFICATION",
+      "categoryType": "INBOUND",
+      "data": {
+        "payload": {}
+      }
+    },
+    {
+      "label": "Add Task",
+      "type": "ADD_TASK",
+      "categoryType": "INBOUND",
+      "data": {
+        "payload": {
+          "title": "",
+          "type": "",
+          "priority": "",
+          "assignedTo": "",
+          "dueData": "",
+          "repeat": false,
+          "notes": ""
+        }
+      }
+    },
+    {
+      "label": "Add Note",
+      "type": "ADD_NOTE",
+      "categoryType": "WRITE_TO_DB",
+      "data": {
+        "payload": {
+          "text": ""
+        }
+      }
+    },
+    {
+      "label": "Update Candidate",
+      "type": "UPDATE_CANDIDATE",
+      "categoryType": "WRITE_TO_DB",
+      "data": {
+        "payload": {}
+      }
+    },
+    {
+      "label": "End Automation",
+      "type": "END_AUTOMATION",
+      "categoryType": "END",
+      "data": {
+        "payload": {}
+      }
+    },
+    {
+      "label": "Path",
+      "type": "PATH",
+      "categoryType": "PATH",
+      "data": {
+        "payload": {
+          "label": "Path"
+        }
+      }
+    }
+  ]
+}

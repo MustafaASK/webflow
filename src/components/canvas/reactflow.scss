@@ -1,0 +1,74 @@
+@import "../../assets/style/variable";
+.react-flow-wrapper {
+  height: 100vh;
+  width: 100vw;
+  font-family: $font-family;
+  transition: transform 0.2s linear;
+  .react-flow-container {
+    // background: radial-gradient(
+    //     151.53% 366.79% at 100% -9.66%,
+    //     rgba(180, 157, 255, 0.24) 0,
+    //     rgba(240, 253, 242, 0.28) 29.39%,
+    //     rgba(231, 230, 255, 0.52) 95.33%
+    //   ),
+    //   linear-gradient(0deg, #fbfbff, #fbfbff);
+    background-color: rgb(247, 245, 242);
+  }
+}
+
+.react-flow__viewport {
+  transition: transform 0.1s linear;
+}
+
+.react-flow__handle-top {
+  visibility: hidden;
+}
+
+.react-flow__handle-bottom {
+  visibility: hidden;
+}
+
+.react-flow__zoompane {
+  max-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.react-flow__node {
+  .node-container-default {
+    &.node-container-default-selected {
+      border-color: rgb(61, 69, 146);
+      border-style: solid;
+      background-color: rgb(240, 241, 250);
+      color: rgb(45, 46, 46);
+      transition: opacity 150ms ease-out 0s, box-shadow 150ms ease-out 0s,
+        border-color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s;
+      width: 500px;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 30px 0px;
+      box-sizing: border-box;
+      opacity: 1;
+    }
+  }
+}
+
+.react-flow__handle {
+  background: transparent;
+  border-radius: 0;
+  border: 0;
+  height: 100%;
+  right: 0;
+  width: 50%;
+
+  &::after {
+    background-color: white;
+    border-radius: 100%;
+    border: 2px solid black;
+    content: "";
+    display: block;
+    height: 1.2rem;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 1.2rem;
+  }
+}

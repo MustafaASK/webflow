@@ -1,0 +1,31 @@
+.node-rename-container {
+  position: absolute;
+  z-index: 2;
+  top: -75px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px 0px;
+  border: 1px solid rgb(232, 231, 228);
+  background-color: rgb(255, 253, 249);
+  border-radius: 5px;
+  transition-property: box-shadow, border-color, background-color;
+  transition-timing-function: ease-in-out;
+  transition-duration: 300ms;
+  width: 98%;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  .node-rename-container-input {
+    width: 80%;
+  }
+  .node-rename-container-icon {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .node-rename-container-tick {
+    width: 10%;
+  }
+}

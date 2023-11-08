@@ -1,0 +1,181 @@
+@import "../../../assets/style/variable";
+.actions-modal-list-container {
+  &-header {
+    font-size: 18px;
+    line-height: var(--zds-typography-paragraph1short-lineheight, 24px);
+    font-weight: 400;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    background-color: rgb(31, 49, 33);
+    padding: 20px;
+    &-left {
+      font-size: 24px;
+      line-height: 30px;
+      font-weight: 600;
+      color: rgb(255, 253, 249);
+    }
+    &-right {
+      cursor: pointer;
+      color: rgb(255, 253, 249);
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+  &-body {
+    display: flex;
+    justify-content: space-between;
+    &-left {
+      width: 100%;
+      background-color: rgb(255, 253, 249);
+      border-radius: 10px;
+      padding: 20px;
+      min-height: 300px;
+      .action-items-container {
+        display: grid;
+        gap: 5px;
+        grid-template-columns: 1fr;
+        height: auto;
+        grid-template-columns: repeat(2, 1fr);
+        .node-container-action-item {
+          padding: 10px;
+          display: flex;
+          -webkit-box-align: center;
+          align-items: center;
+          border-radius: 10px;
+          transition: all 300ms ease-in-out 0s;
+          border: 1px solid transparent;
+          position: relative;
+          &:hover {
+            border: 1px solid rgb(230, 230, 230);
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px 0px;
+            background-color: rgb(255, 253, 249);
+            border-radius: 10px;
+            cursor: pointer;
+          }
+          &::before {
+            content: "";
+            position: absolute;
+            pointer-events: none;
+            inset: 2px;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            transition-property: all;
+            transition-timing-function: ease-in-out;
+            transition-duration: 300ms;
+          }
+          &-left {
+            margin-right: 10px;
+            height: 30px;
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img {
+              height: 15px;
+              width: 15px;
+            }
+            &.OUTBOUND {
+              background-color: $background-outbound;
+            }
+            &.INBOUND {
+              background-color: $background-inbound;
+            }
+            &.WRITE_TO_DB {
+              background-color: $background-write;
+            }
+            &.END {
+              background-color: $background-end;
+            }
+            &.WAIT {
+              background-color: $background-wait;
+            }
+          }
+          &-right {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 16px;
+            color: rgb(45, 46, 46);
+          }
+          &.node-container-action-item-disabled {
+            &:hover {
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
+    }
+    &-right {
+      background-color: rgb(255, 243, 230);
+      padding: 20px 25px;
+      border-radius: 10px;
+      &-tools {
+        margin-top: 20px;
+      }
+
+      .action-modal-tools-item {
+        background-color: transparent;
+        transition: all 300ms ease-in-out 0s;
+        border: 1px solid rgb(117, 117, 117);
+        border-radius: 5px;
+        padding: 12px 24px;
+        display: flex;
+        align-items: flex-start;
+        text-align: left;
+        width: 100%;
+        height: 90px;
+        position: relative;
+        &.action-modal-tools-item-disabled {
+          cursor: not-allowed !important;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          pointer-events: none;
+          top: 2px;
+          right: 2px;
+          bottom: 2px;
+          left: 2px;
+          transition-property: all;
+          transition-timing-function: ease-in-out;
+          transition-duration: 300ms;
+          border-width: 2px;
+          border-style: solid;
+          border-color: transparent;
+          border-image: initial;
+          border-radius: 5px;
+        }
+        &:hover {
+          background-color: transparent;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px 0px;
+          cursor: pointer;
+        }
+        .action-modal-tools-item-img {
+          border-radius: 0px;
+          img {
+            width: 50px;
+            height: 50px;
+          }
+        }
+        .action-modal-tools-item-content {
+          color: rgb(64, 63, 62);
+          display: flex;
+          flex-direction: column;
+          margin-left: 20px;
+          .action-modal-tools-item-header {
+            color: rgb(45, 46, 46);
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 600;
+          }
+          .action-modal-tools-item-sub-header {
+            color: rgb(64, 63, 62);
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+}
