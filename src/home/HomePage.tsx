@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Button, Paper, Stack, Typography } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
@@ -6,6 +6,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { useNavigate } from "react-router-dom";
+import apiService from '../api/apiService';
 
 import './HomePage.css'
 
@@ -18,10 +19,64 @@ const HomeDummyData = [
 const HomePage = () => {
 
     const navigate = useNavigate()
+    const [webflowid, setWebflowId] = useState('')
+    const [listData, setListData] = useState([])
 
     const onClickAddForm = () => {
         navigate('/addform')
+        getlistbyid(webflowid)
     }
+
+    const getData = () => {
+
+        apiService.getlistdata()
+            .then((response: any) => {
+                // setTeamLeads(response.data);
+                console.log('getlistdataResponse:', response.data);
+                setWebflowId(response.data[0].webflowid)
+                setListData(response.data)
+            })
+            .catch((error: any) => {
+                console.error('Error fetching data:', error);
+            });
+    };
+
+    useEffect(() => {
+        getData();
+    }, []);
+
+    const getlistbyid = (id: any) => {
+
+        apiService.getlistbyid(id)
+            .then((response: any) => {
+                // setTeamLeads(response.data);
+                console.log('getlistbyidResponse:', response.data);
+
+            })
+            .catch((error: any) => {
+                console.error('Error fetching data:', error);
+            });
+    };
+
+    const deletelistbyid = () => {
+        const deletedId = '9'
+        apiService.deletewebflow(deletedId)
+            .then((response: any) => {
+                // setTeamLeads(response.data);
+                console.log('deletewebflowResponse:', response.data);
+
+            })
+            .catch((error: any) => {
+                console.error('Error fetching data:', error);
+            });
+    };
+
+    const onClickDeleteBtn = () => {
+
+        deletelistbyid()
+    }
+
+    console.log('aaaaaaa', listData)
 
     return (
 
@@ -43,7 +98,11 @@ const HomePage = () => {
                             <Box>
                                 <Button variant="outlined" className="list-action-btn" ><VisibilityIcon sx={{ fontSize: "22px" }} /></Button>
                                 <Button variant="outlined" className="list-action-btn" ><EditIcon sx={{ fontSize: "22px" }} /></Button>
-                                <Button variant="outlined" className="list-action-btn"><DeleteOutlineIcon sx={{ fontSize: "22px", color: "rgb(211, 47, 47)" }} /></Button>
+                                <Button variant="outlined" className="list-action-btn"
+                                    onClick={onClickDeleteBtn}
+                                >
+                                    <DeleteOutlineIcon sx={{ fontSize: "22px", color: "rgb(211, 47, 47)" }} />
+                                </Button>
                             </Box>
 
                         </Box>

@@ -19,6 +19,7 @@ import { NODE_TYPES } from "../../constant/nodeTypes";
 import { validateGraph } from "./validation";
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import { useNavigate } from "react-router-dom";
+import apiService from "../../api/apiService";
 
 import './canvas.scss'
 
@@ -321,6 +322,8 @@ const Canvas = () => {
         // draft.edgesData = edges;
       })
     );
+
+    submitData()
   };
 
   const navigate = useNavigate()
@@ -328,6 +331,55 @@ const Canvas = () => {
   const onClickBackIcon = () => {
     navigate('/')
   }
+
+  const submitData = () => {
+
+    const saveData = {
+      "webflowid": "",
+      "webflowname": "my2WebflowName",
+      "desc": "2Description",
+      "json": {
+        "Trigger": {
+          "type": "TRIGGER",
+          "next": [
+            "4f365417-6a36-4d7e-8418-19c510105141"
+          ]
+        },
+        "4f365417-6a36-4d7e-8418-19c510105141": {
+          "type": "ADD_NOTE",
+          "payload": {
+            "text": ""
+          },
+          "next": [
+            "7762cc2a-ef7b-4ed7-bfe1-04e0d107fcd7"
+          ]
+        },
+        "7762cc2a-ef7b-4ed7-bfe1-04e0d107fcd7": {
+          "type": "ADD_TASK",
+          "payload": {
+            "title": "",
+            "type": "",
+            "priority": "",
+            "assignedTo": "",
+            "dueData": "",
+            "repeat": false,
+            "notes": ""
+          },
+          "next": []
+        }
+      }
+    }
+
+    apiService.savewebflow(saveData)
+      .then((response: any) => {
+        // setTeamLeads(response.data);
+        console.log('getlistdataResponse:', response.data);
+
+      })
+      .catch((error: any) => {
+        console.error('Error fetching data:', error);
+      });
+  };
 
   return (
     <ReactFlowContext.Provider
