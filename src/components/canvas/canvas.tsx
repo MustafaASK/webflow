@@ -13,9 +13,14 @@ import {
   generateNormalizedObject,
   convertBackendObjectToGraph,
 } from "./helper";
+import { Box, TextField, Button } from '@mui/material'
 import { initialEdges, initialNodes } from "../../content/template/initalData";
 import { NODE_TYPES } from "../../constant/nodeTypes";
 import { validateGraph } from "./validation";
+import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
+import { useNavigate } from "react-router-dom";
+
+import './canvas.scss'
 
 const Canvas = () => {
   const [state, setState] = useState({
@@ -307,7 +312,7 @@ const Canvas = () => {
       state?.edgesData
     );
     // let { nodes, edges } = convertBackendObjectToGraph(nodesObject);
-console.log("data to backend : ", nodesObject)
+    console.log("data to backend : ", nodesObject)
     setState(
       produce((draft) => {
         // @ts-ignore
@@ -317,6 +322,12 @@ console.log("data to backend : ", nodesObject)
       })
     );
   };
+
+  const navigate = useNavigate()
+
+  const onClickBackIcon = () => {
+    navigate('/')
+  }
 
   return (
     <ReactFlowContext.Provider
@@ -342,7 +353,15 @@ console.log("data to backend : ", nodesObject)
         handleTaskUpdate,
       }}
     >
-      <button onClick={validate}> Submit</button>
+      <Box className='top-container'>
+        <Box className='top-input-container' >
+          <ArrowBackRoundedIcon className="back-icon" onClick={onClickBackIcon} />
+          <TextField variant="outlined" placeholder="Webformname" />
+          <TextField variant="outlined" placeholder="Description" />
+        </Box>
+        <Button onClick={validate} className="submit-btn" variant="contained"> Submit</Button>
+      </Box>
+
       <ReactFlowWrapper />
       {state.isRightSidebarOpen && (
         <RightSidebarWrapper elementSelected={state?.elementSelected} />

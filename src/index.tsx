@@ -4,13 +4,14 @@ import "./index.css";
 import Canvas from "./components/canvas";
 import reportWebVitals from "./reportWebVitals";
 import "./assets/style/_theme.scss";
+import App from "./App";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Canvas />
+    <App />
   </React.StrictMode>
 );
 

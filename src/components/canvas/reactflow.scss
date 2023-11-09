@@ -1,9 +1,11 @@
 @import "../../assets/style/variable";
+
 .react-flow-wrapper {
-  height: 100vh;
+  height: 92vh;
   width: 100vw;
   font-family: $font-family;
   transition: transform 0.2s linear;
+
   .react-flow-container {
     // background: radial-gradient(
     //     151.53% 366.79% at 100% -9.66%,

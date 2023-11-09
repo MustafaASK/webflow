@@ -1,0 +1,41 @@
+.top-container {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding-right: 5px;
+}
+
+.top-input-container {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    padding: 8px;
+}
+
+.back-icon {
+    color: #1a1a1a !important;
+    font-size: 14px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.MuiInputBase-input.MuiOutlinedInput-input {
+    padding: 7px !important;
+
+}
+
+.MuiFormControl-root.MuiTextField-root {
+    margin-right: 5px;
+}
+
+.submit-btn {
+    text-transform: capitalize !important;
+    background-color: #146ef6 !important;
+    height: 35px;
+    width: 100px;
+}
+
+.submit-btn:hover {
+    background-color: #146ef6 !important;
+}

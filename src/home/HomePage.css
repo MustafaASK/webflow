@@ -1,0 +1,60 @@
+.home-container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-top: 15%;
+    justify-content: center;
+}
+
+.list-add-form-btn {
+    /* border: 1px solid transparent !important; */
+    /* margin: 0px !important; */
+    padding: 0px !important;
+    width: 32px !important;
+    min-width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    box-shadow: none !important;
+    border-color: rgb(211, 47, 47) !important;
+}
+
+.list-add-form-btn:hover,
+.list-add-form-btn:focus {
+    color: #fff;
+    background-color: rgb(211, 47, 47) !important;
+    border-color: rgb(211, 47, 47) !important;
+}
+
+.form-name-overflow {
+    width: 70%;
+    text-overflow: ellipsis;
+    /* word-wrap: normal; */
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.list-action-btn {
+    border: 0px !important;
+    padding: 0px !important;
+    width: 32px !important;
+    min-width: 32px !important;
+    height: 32px !important;
+    /* border-radius: 50% !important; */
+    box-shadow: none !important;
+}
+
+.list-action-btn:hover {
+    background-color: unset !important;
+}
+
+.list-form-name {
+    display: flex;
+    width: 75%
+}
+
+.list-accordion-item {
+    font-size: 13px;
+    font-family: Regular;
+    align-self: center;
+}
