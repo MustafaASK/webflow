@@ -8,6 +8,12 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { useNavigate } from "react-router-dom";
 import apiService from '../api/apiService';
 import { ReactFlowContext } from '../context/reactFlowContext';
+import { Popover } from '@mui/material';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 import './HomePage.css'
 
@@ -83,7 +89,23 @@ const HomePage = () => {
         navigate(`/edit/${editId}`)
     }
 
-    // console.log('aaaaaaa', listData)
+    console.log('aaaaaaa', listData)
+
+    const [openDeletePopup, setOpenDeletePopup] = useState<{ [key: string]: boolean }>({});
+
+    const handleClickOpenDeletePopup = (deletedId: any) => {
+        setOpenDeletePopup((prev: any) => ({
+            ...prev,
+            [deletedId]: true
+        }));
+    };
+
+    const handleCloseDeletePopup = (deletedId: any) => {
+        setOpenDeletePopup((prev: any) => ({
+            ...prev,
+            [deletedId]: false
+        }));
+    };
 
     return (
 
@@ -108,10 +130,51 @@ const HomePage = () => {
                                     onClickEditBtn(item.webflowid)
                                 }}><EditIcon sx={{ fontSize: "22px" }} /></Button>
                                 <Button variant="outlined" className="list-action-btn"
-                                    onClick={() => onClickDeleteBtn(item.webflowid)}
+                                    onClick={() => handleClickOpenDeletePopup(item.webflowid)}
                                 >
                                     <DeleteOutlineIcon sx={{ fontSize: "22px", color: "rgb(211, 47, 47)" }} />
                                 </Button>
+
+                                <Dialog
+                                    id={item.webflowid}
+                                    open={openDeletePopup[item.webflowid] || false}
+                                    onClose={() => handleCloseDeletePopup(item.webflowid)}
+                                    aria-labelledby="alert-dialog-title"
+                                    aria-describedby="alert-dialog-description"
+
+                                >
+                                    <Box className='delete-popup-card'>
+
+                                        <DialogContent>
+                                            <DialogContentText
+                                                id="alert-dialog-description"
+                                            >
+                                                <Typography className='delete-popup-text'>
+                                                    Are you sure you want to delete {item.webflowname} ?
+                                                </Typography>
+                                                {/* <Typography className='delete-popup-text'></Typography> */}
+                                            </DialogContentText>
+                                        </DialogContent>
+                                        <DialogActions className='delete-popup-btn-align'>
+                                            <Button onClick={() => handleCloseDeletePopup(item.webflowid)}
+                                                variant='contained'
+                                                className='delete-popup-btn-no delete-popup-btn'
+                                            >
+                                                No
+                                            </Button>
+
+                                            <Button
+                                                onClick={() => onClickDeleteBtn(item.webflowid)}
+                                                variant='contained'
+                                                className='delete-popup-btn-yes delete-popup-btn'
+                                            >
+                                                Yes
+                                            </Button>
+
+                                        </DialogActions>
+
+                                    </Box>
+                                </Dialog>
                             </Box>
 
                         </Box>

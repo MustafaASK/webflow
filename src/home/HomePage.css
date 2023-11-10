@@ -58,3 +58,37 @@
     font-family: Regular;
     align-self: center;
 }
+
+.delete-popup-card {
+    width: 350px !important;
+    height: 140px !important;
+    text-align: center;
+}
+
+.delete-popup-text {
+    font-size: 16px !important;
+    color: #1A1A1A !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 600 !important;
+}
+
+.delete-popup-btn-align {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    justify-content: center !important;
+}
+
+.delete-popup-btn-yes {
+    background-color: #db2a2a !important;
+}
+
+.delete-popup-btn {
+    height: 30px;
+    font-family: 'Segoe UI' !important;
+    font-size: 14px !important;
+}
+
+.delete-popup-btn-no {
+    background-color: #146ef6 !important;
+}
