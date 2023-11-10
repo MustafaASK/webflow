@@ -79,6 +79,10 @@ const HomePage = () => {
         deletelistbyid(deletedId)
     }
 
+    const onClickEditBtn = (editId: any) => {
+        navigate(`/edit/${editId}`)
+    }
+
     // console.log('aaaaaaa', listData)
 
     return (
@@ -100,7 +104,9 @@ const HomePage = () => {
                             </Typography>
                             <Box >
                                 <Button variant="outlined" className="list-action-btn" ><VisibilityIcon sx={{ fontSize: "22px" }} /></Button>
-                                <Button variant="outlined" className="list-action-btn" ><EditIcon sx={{ fontSize: "22px" }} /></Button>
+                                <Button variant="outlined" className="list-action-btn" onClick={() => {
+                                    onClickEditBtn(item.webflowid)
+                                }}><EditIcon sx={{ fontSize: "22px" }} /></Button>
                                 <Button variant="outlined" className="list-action-btn"
                                     onClick={() => onClickDeleteBtn(item.webflowid)}
                                 >
