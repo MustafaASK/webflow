@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { Box, Button, Paper, Stack, Typography } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
@@ -7,6 +7,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { useNavigate } from "react-router-dom";
 import apiService from '../api/apiService';
+import { ReactFlowContext } from '../context/reactFlowContext';
 
 import './HomePage.css'
 
@@ -33,7 +34,9 @@ const HomePage = () => {
             .then((response: any) => {
                 // setTeamLeads(response.data);
                 console.log('getlistdataResponse:', response.data);
-                setWebflowId(response.data[0].webflowid)
+                if (response.data.length) {
+                    setWebflowId(response.data[0].webflowid)
+                }
                 setListData(response.data)
             })
             .catch((error: any) => {
@@ -54,29 +57,29 @@ const HomePage = () => {
 
             })
             .catch((error: any) => {
-                console.error('Error fetching data:', error);
+                console.error('Error list fetching data:', error);
             });
     };
 
-    const deletelistbyid = () => {
-        const deletedId = '9'
+    const deletelistbyid = (deletedId: any) => {
+        // const deletedId = '9'
         apiService.deletewebflow(deletedId)
             .then((response: any) => {
                 // setTeamLeads(response.data);
+                getData()
                 console.log('deletewebflowResponse:', response.data);
 
             })
             .catch((error: any) => {
-                console.error('Error fetching data:', error);
+                console.error('Error delete fetching data:', error);
             });
     };
 
-    const onClickDeleteBtn = () => {
-
-        deletelistbyid()
+    const onClickDeleteBtn = (deletedId: any) => {
+        deletelistbyid(deletedId)
     }
 
-    console.log('aaaaaaa', listData)
+    // console.log('aaaaaaa', listData)
 
     return (
 
@@ -86,20 +89,20 @@ const HomePage = () => {
             </Box>
 
             <Box sx={{ width: '35%', mt: 1 }}>
-                {HomeDummyData.map((item: any) => (
-                    <Paper sx={{ mb: 1, p: 1, border: "1px solid #d5cece" }} elevation={0} key={item.data}>
+                {listData.map((item: any) => (
+                    <Paper sx={{ mb: 1, p: 1, border: "1px solid #d5cece" }} elevation={0} id={item.webflowid} key={item.webflowid}>
                         <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
 
                             <Typography className="list-accordion-item list-form-name" sx={{ pl: 1 }}>
                                 <ChevronRightRoundedIcon sx={{ fontSize: "24px", color: "white", backgroundColor: "rgb(211, 47, 47)", borderRadius: "50%" }} />
-                                <Typography component={"span"} sx={{ pl: 1 }} className="form-name-overflow" >{item.data}</Typography>
+                                <Typography component={"span"} sx={{ pl: 1 }} className="form-name-overflow" >{item.webflowname}</Typography>
 
                             </Typography>
-                            <Box>
+                            <Box >
                                 <Button variant="outlined" className="list-action-btn" ><VisibilityIcon sx={{ fontSize: "22px" }} /></Button>
                                 <Button variant="outlined" className="list-action-btn" ><EditIcon sx={{ fontSize: "22px" }} /></Button>
                                 <Button variant="outlined" className="list-action-btn"
-                                    onClick={onClickDeleteBtn}
+                                    onClick={() => onClickDeleteBtn(item.webflowid)}
                                 >
                                     <DeleteOutlineIcon sx={{ fontSize: "22px", color: "rgb(211, 47, 47)" }} />
                                 </Button>
