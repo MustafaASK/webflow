@@ -22,10 +22,14 @@ import { validateGraph } from "./validation";
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import { useNavigate } from "react-router-dom";
 import apiService from "../../api/apiService";
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+
+
 import './canvas.scss'
 
 const AddForm = () => {
-    
+
   const [state, setState] = useState({
     nodesData: initialNodes,
     edgesData: initialEdges,
@@ -334,45 +338,138 @@ const AddForm = () => {
     navigate('/')
   }
 
-    return (
-      <div className="journey-builder-app-container">
+  const Validations = Yup.object({
+    webformname: Yup.string().required('Required WebFormName'),
+    description: Yup.string().required('Required Description'),
+  })
+
+  const formik = useFormik({
+    initialValues: {
+      webformname: "",
+      description: ""
+    },
+    validationSchema: Validations,
+    onSubmit: () => {
+      submitData()
+    }
+  })
+
+  const submitData = () => {
+
+    const saveData = {
+      "webflowid": "",
+      "webflowname": "my2WebflowName",
+      "desc": "2Description",
+      "json": {
+        "Trigger": {
+          "type": "TRIGGER",
+          "next": [
+            "4f365417-6a36-4d7e-8418-19c510105141"
+          ]
+        },
+        "4f365417-6a36-4d7e-8418-19c510105141": {
+          "type": "ADD_NOTE",
+          "payload": {
+            "text": ""
+          },
+          "next": [
+            "7762cc2a-ef7b-4ed7-bfe1-04e0d107fcd7"
+          ]
+        },
+        "7762cc2a-ef7b-4ed7-bfe1-04e0d107fcd7": {
+          "type": "ADD_TASK",
+          "payload": {
+            "title": "",
+            "type": "",
+            "priority": "",
+            "assignedTo": "",
+            "dueData": "",
+            "repeat": false,
+            "notes": ""
+          },
+          "next": []
+        }
+      }
+    }
+
+    apiService.savewebflow(saveData)
+      .then((response: any) => {
+        // setTeamLeads(response.data);
+        console.log('getlistdataResponse:', response.data);
+
+      })
+      .catch((error: any) => {
+        console.error('Error fetching data:', error);
+      });
+  };
+
+  return (
+    <form className="journey-builder-app-container" onSubmit={formik.handleSubmit}>
       <BaseLayout>
         <ReactFlowProvider>
-          
-    <ReactFlowContext.Provider
-    value={{
-      state,
-      addPath,
-      updateNodeAndEdge,
-      addNode,
-      addOnePath,
-      deleteNode,
-      udpateElementSelected,
-      udpateRightSideBar,
-      updatePathRulesNodeData,
-      deletePathRules,
-      handleUpdateOfPathRules,
-      handleRenameFieldUpdate,
-      handleUpdateOfPathName,
-      updateAddStepNodeStyleUpdate,
-      updateNodeAddOnDrop,
-      handleEmailUpdate,
-      handleSendTextUpdate,
-      handleDelayUpdate,
-      handleTaskUpdate,
-    }}
-  >
-    <div>helo</div>
-    <ReactFlowWrapper />
-    {/* {state.isRightSidebarOpen && (
+
+          <ReactFlowContext.Provider
+            value={{
+              state,
+              addPath,
+              updateNodeAndEdge,
+              addNode,
+              addOnePath,
+              deleteNode,
+              udpateElementSelected,
+              udpateRightSideBar,
+              updatePathRulesNodeData,
+              deletePathRules,
+              handleUpdateOfPathRules,
+              handleRenameFieldUpdate,
+              handleUpdateOfPathName,
+              updateAddStepNodeStyleUpdate,
+              updateNodeAddOnDrop,
+              handleEmailUpdate,
+              handleSendTextUpdate,
+              handleDelayUpdate,
+              handleTaskUpdate,
+            }}
+          >
+            <Box className='top-container'>
+              <Box className='top-input-container' >
+                <ArrowBackRoundedIcon className="back-icon" onClick={onClickBackIcon} />
+                <Box>
+                  <TextField variant="outlined"
+                    value={formik.values.webformname}
+                    id="webformname" name="webformname"
+                    placeholder="Webformname"
+                    onChange={formik.handleChange} />
+                  {formik.errors.webformname ? <div className="error-msg">{formik.errors.webformname}</div> : null}
+                </Box>
+                <Box>
+                  <TextField variant="outlined"
+                    value={formik.values.description}
+                    id="description"
+                    name="description"
+                    placeholder="Description"
+                    onChange={formik.handleChange} />
+                  {formik.errors.description ? <div className="error-msg">{formik.errors.description}</div> : null}
+                </Box>
+              </Box>
+              <Button
+                type="submit"
+                // onClick={submitData}
+                className="submit-btn"
+                variant="contained">
+                Submit
+              </Button>
+            </Box>
+            <ReactFlowWrapper />
+            {/* {state.isRightSidebarOpen && (
       <RightSidebarWrapper elementSelected={state?.elementSelected} />
     )} */}
-  </ReactFlowContext.Provider>
+          </ReactFlowContext.Provider>
         </ReactFlowProvider>
       </BaseLayout>
-    </div>
-        
-    )
+    </form>
+
+  )
 }
 
 export default AddForm
