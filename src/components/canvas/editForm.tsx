@@ -353,6 +353,10 @@ const EditForm = () => {
       .then((response: any) => {
         // setTeamLeads(response.data);
         console.log('getlistbyidResponse:', response.data);
+        formik.setValues({"editwebformname":response.data.webflowname,"editdescription":"demo"});
+        let { nodes, edges } = convertBackendObjectToGraph(response.data.jsom);
+        updateNodeAndEdge(nodes, edges);
+        // formik.setFieldValue(response.data.webflowname,"demo");
 
       })
       .catch((error: any) => {
@@ -377,9 +381,40 @@ const EditForm = () => {
     },
     validationSchema: Validations,
     onSubmit: (values) => {
-      console.log('aa', values)
+      submitData(values)
     }
   })
+  
+  const submitData = (values:any) => {
+    // console.log(JSON.stringify(values, null, 2));
+    let nodesObject = generateNormalizedObject(
+      state?.nodesData,
+      state?.edgesData
+    );
+    // let { nodes, edges } = convertBackendObjectToGraph(nodesObject);
+    // console.log("data to backend : ")
+    // console.log(JSON.stringify(nodesObject))
+    // return
+    const saveData = {
+      "webflowid": routeParams.webid,
+      "webflowname": values.editwebformname,
+      "desc": values.editdescription,
+      "json": (nodesObject)
+    }
+
+    apiService.savewebflow(saveData)
+      .then((response: any) => {
+        // setTeamLeads(response.data);
+        console.log('getlistdataResponse:', response.data);
+        if(response.data.Success){
+          navigate('/')
+        }
+
+      })
+      .catch((error: any) => {
+        console.error('Error fetching data:', error);
+      });
+  };
 
   return (
     <form className="journey-builder-app-container" onSubmit={formik.handleSubmit}>
@@ -439,9 +474,9 @@ const EditForm = () => {
               </Button>
             </Box>
             <ReactFlowWrapper />
-            {/* {state.isRightSidebarOpen && (
+            {state.isRightSidebarOpen && (
       <RightSidebarWrapper elementSelected={state?.elementSelected} />
-    )} */}
+    )}
           </ReactFlowContext.Provider>
         </ReactFlowProvider>
       </BaseLayout>

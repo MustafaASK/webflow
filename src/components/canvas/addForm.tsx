@@ -355,7 +355,7 @@ const AddForm = () => {
   })
 
   const submitData = (values:any) => {
-    console.log(JSON.stringify(values, null, 2));
+    // console.log(JSON.stringify(values, null, 2));
     let nodesObject = generateNormalizedObject(
       state?.nodesData,
       state?.edgesData
