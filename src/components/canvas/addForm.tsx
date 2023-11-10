@@ -349,53 +349,35 @@ const AddForm = () => {
       description: ""
     },
     validationSchema: Validations,
-    onSubmit: () => {
-      submitData()
+    onSubmit: (values) => {
+      submitData(values)
     }
   })
 
-  const submitData = () => {
-
+  const submitData = (values:any) => {
+    console.log(JSON.stringify(values, null, 2));
+    let nodesObject = generateNormalizedObject(
+      state?.nodesData,
+      state?.edgesData
+    );
+    // let { nodes, edges } = convertBackendObjectToGraph(nodesObject);
+    // console.log("data to backend : ")
+    // console.log(JSON.stringify(nodesObject))
+    // return
     const saveData = {
       "webflowid": "",
-      "webflowname": "my2WebflowName",
-      "desc": "2Description",
-      "json": {
-        "Trigger": {
-          "type": "TRIGGER",
-          "next": [
-            "4f365417-6a36-4d7e-8418-19c510105141"
-          ]
-        },
-        "4f365417-6a36-4d7e-8418-19c510105141": {
-          "type": "ADD_NOTE",
-          "payload": {
-            "text": ""
-          },
-          "next": [
-            "7762cc2a-ef7b-4ed7-bfe1-04e0d107fcd7"
-          ]
-        },
-        "7762cc2a-ef7b-4ed7-bfe1-04e0d107fcd7": {
-          "type": "ADD_TASK",
-          "payload": {
-            "title": "",
-            "type": "",
-            "priority": "",
-            "assignedTo": "",
-            "dueData": "",
-            "repeat": false,
-            "notes": ""
-          },
-          "next": []
-        }
-      }
+      "webflowname": values.webformname,
+      "desc": values.description,
+      "json": (nodesObject)
     }
 
     apiService.savewebflow(saveData)
       .then((response: any) => {
         // setTeamLeads(response.data);
         console.log('getlistdataResponse:', response.data);
+        if(response.data.Success){
+          navigate('/')
+        }
 
       })
       .catch((error: any) => {
