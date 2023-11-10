@@ -1,10 +1,10 @@
 // import React, { useState } from "react";
 import React, { useEffect, useState, useContext } from 'react'
 
-import { 
-  BrowserRouter as Router, 
-  Route, 
-  useParams, 
+import {
+  BrowserRouter as Router,
+  Route,
+  useParams,
 } from "react-router-dom";
 import { produce } from "immer";
 import { ReactFlowProvider } from "reactflow";
@@ -29,10 +29,13 @@ import { validateGraph } from "./validation";
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import { useNavigate } from "react-router-dom";
 import apiService from "../../api/apiService";
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+
 import './canvas.scss'
 
 const EditForm = () => {
-    
+
   const [state, setState] = useState({
     nodesData: initialNodes,
     edgesData: initialEdges,
@@ -343,64 +346,108 @@ const EditForm = () => {
     navigate('/')
   }
 
-  
+
   const getlistbyid = (id: any) => {
 
     apiService.getlistbyid(id)
-        .then((response: any) => {
-            // setTeamLeads(response.data);
-            console.log('getlistbyidResponse:', response.data);
+      .then((response: any) => {
+        // setTeamLeads(response.data);
+        console.log('getlistbyidResponse:', response.data);
 
-        })
-        .catch((error: any) => {
-            console.error('Error list fetching data:', error);
-        });
-};
+      })
+      .catch((error: any) => {
+        console.error('Error list fetching data:', error);
+      });
+  };
 
 
-useEffect(() => {
-  getlistbyid(routeParams.webid);
-}, []);
+  useEffect(() => {
+    getlistbyid(routeParams.webid);
+  }, []);
 
-    return (
-      <div className="journey-builder-app-container">
+  const Validations = Yup.object({
+    editwebformname: Yup.string().required('Required WebFormName'),
+    editdescription: Yup.string().required('Required Description'),
+  })
+
+  const formik = useFormik({
+    initialValues: {
+      editwebformname: "",
+      editdescription: ""
+    },
+    validationSchema: Validations,
+    onSubmit: (values) => {
+      console.log('aa', values)
+    }
+  })
+
+  return (
+    <form className="journey-builder-app-container" onSubmit={formik.handleSubmit}>
       <BaseLayout>
         <ReactFlowProvider>
-          
-    <ReactFlowContext.Provider
-    value={{
-      state,
-      addPath,
-      updateNodeAndEdge,
-      addNode,
-      addOnePath,
-      deleteNode,
-      udpateElementSelected,
-      udpateRightSideBar,
-      updatePathRulesNodeData,
-      deletePathRules,
-      handleUpdateOfPathRules,
-      handleRenameFieldUpdate,
-      handleUpdateOfPathName,
-      updateAddStepNodeStyleUpdate,
-      updateNodeAddOnDrop,
-      handleEmailUpdate,
-      handleSendTextUpdate,
-      handleDelayUpdate,
-      handleTaskUpdate,
-    }}
-  >
-    <div>helo</div>
-    <ReactFlowWrapper />
-    {/* {state.isRightSidebarOpen && (
+
+          <ReactFlowContext.Provider
+            value={{
+              state,
+              addPath,
+              updateNodeAndEdge,
+              addNode,
+              addOnePath,
+              deleteNode,
+              udpateElementSelected,
+              udpateRightSideBar,
+              updatePathRulesNodeData,
+              deletePathRules,
+              handleUpdateOfPathRules,
+              handleRenameFieldUpdate,
+              handleUpdateOfPathName,
+              updateAddStepNodeStyleUpdate,
+              updateNodeAddOnDrop,
+              handleEmailUpdate,
+              handleSendTextUpdate,
+              handleDelayUpdate,
+              handleTaskUpdate,
+            }}
+          >
+            <Box className='top-container'>
+              <Box className='top-input-container' >
+                <ArrowBackRoundedIcon className="back-icon" onClick={onClickBackIcon} />
+                <Box sx={{}}>
+                  <TextField variant="outlined"
+                    value={formik.values.editwebformname}
+                    id="editwebformname" name="editwebformname"
+                    placeholder="Webformname"
+                    onChange={formik.handleChange} />
+                  {formik.errors.editwebformname ? <div className="error-msg">{formik.errors.editwebformname}</div> : null}
+                </Box>
+                <Box>
+                  <TextField variant="outlined"
+                    value={formik.values.editdescription}
+                    id="editdescription"
+                    name="editdescription"
+                    placeholder="Description"
+                    onChange={formik.handleChange} />
+                  {formik.errors.editdescription ? <div className="error-msg">{formik.errors.editdescription}</div> : null}
+                </Box>
+              </Box>
+              <Button
+                type="submit"
+                // onClick={submitData}
+                className="submit-btn"
+                variant="contained">
+                Submit
+              </Button>
+            </Box>
+            <ReactFlowWrapper />
+            {/* {state.isRightSidebarOpen && (
       <RightSidebarWrapper elementSelected={state?.elementSelected} />
     )} */}
-  </ReactFlowContext.Provider>
+          </ReactFlowContext.Provider>
         </ReactFlowProvider>
       </BaseLayout>
-    </div>
-        
-    )
+    </form>
+
+  )
 }
 
 export default EditForm
