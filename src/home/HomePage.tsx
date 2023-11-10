@@ -24,7 +24,7 @@ const HomePage = () => {
     const [listData, setListData] = useState([])
 
     const onClickAddForm = () => {
-        navigate('/addform')
+        navigate('/add')
         getlistbyid(webflowid)
     }
 
