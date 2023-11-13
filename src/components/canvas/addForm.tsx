@@ -443,7 +443,7 @@ const AddForm = () => {
                 // onClick={submitData}
                 className="submit-btn"
                 variant="contained">
-                Submit
+                Save
               </Button>
             </Box>
             <ReactFlowWrapper />
