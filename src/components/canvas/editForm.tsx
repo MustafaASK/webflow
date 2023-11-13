@@ -353,7 +353,7 @@ const EditForm = () => {
       .then((response: any) => {
         // setTeamLeads(response.data);
         console.log('getlistbyidResponse:', response.data);
-        formik.setValues({"editwebformname":response.data.webflowname,"editdescription":"demo"});
+        formik.setValues({ "editwebformname": response.data.webflowname, "editdescription": "demo" });
         let { nodes, edges } = convertBackendObjectToGraph(response.data.jsom);
         updateNodeAndEdge(nodes, edges);
         // formik.setFieldValue(response.data.webflowname,"demo");
@@ -384,8 +384,8 @@ const EditForm = () => {
       submitData(values)
     }
   })
-  
-  const submitData = (values:any) => {
+
+  const submitData = (values: any) => {
     // console.log(JSON.stringify(values, null, 2));
     let nodesObject = generateNormalizedObject(
       state?.nodesData,
@@ -406,7 +406,7 @@ const EditForm = () => {
       .then((response: any) => {
         // setTeamLeads(response.data);
         console.log('getlistdataResponse:', response.data);
-        if(response.data.Success){
+        if (response.data.Success) {
           navigate('/')
         }
 
@@ -447,22 +447,26 @@ const EditForm = () => {
             <Box className='top-container'>
               <Box className='top-input-container' >
                 <ArrowBackRoundedIcon className="back-icon" onClick={onClickBackIcon} />
-                <Box sx={{}}>
+                <Box sx={{ height: '45px' }}>
                   <TextField variant="outlined"
                     value={formik.values.editwebformname}
                     id="editwebformname" name="editwebformname"
                     placeholder="Webformname"
-                    onChange={formik.handleChange} />
-                  {formik.errors.editwebformname ? <div className="error-msg">{formik.errors.editwebformname}</div> : null}
+                    spellCheck='false'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur} />
+                  {(formik.errors.editwebformname && formik.touched.editwebformname) ? <div className="error-msg">{formik.errors.editwebformname}</div> : null}
                 </Box>
-                <Box>
+                <Box sx={{ height: '45px' }}>
                   <TextField variant="outlined"
                     value={formik.values.editdescription}
                     id="editdescription"
                     name="editdescription"
                     placeholder="Description"
-                    onChange={formik.handleChange} />
-                  {formik.errors.editdescription ? <div className="error-msg">{formik.errors.editdescription}</div> : null}
+                    spellCheck='false'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur} />
+                  {(formik.errors.editdescription && formik.touched.editdescription) ? <div className="error-msg">{formik.errors.editdescription}</div> : null}
                 </Box>
               </Box>
               <Button
@@ -475,8 +479,8 @@ const EditForm = () => {
             </Box>
             <ReactFlowWrapper />
             {state.isRightSidebarOpen && (
-      <RightSidebarWrapper elementSelected={state?.elementSelected} />
-    )}
+              <RightSidebarWrapper elementSelected={state?.elementSelected} />
+            )}
           </ReactFlowContext.Provider>
         </ReactFlowProvider>
       </BaseLayout>

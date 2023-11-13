@@ -7,13 +7,11 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { useNavigate } from "react-router-dom";
 import apiService from '../api/apiService';
-import { ReactFlowContext } from '../context/reactFlowContext';
-import { Popover } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded';
 
 import './HomePage.css'
 
@@ -89,7 +87,27 @@ const HomePage = () => {
         navigate(`/edit/${editId}`)
     }
 
-    console.log('aaaaaaa', listData)
+    // const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
+
+    // const onClickToggleVisibility = (list: any) => {
+    //     setIsVisible((prevState) => ({
+    //         ...prevState,
+    //         [list.webflowid]: !prevState[list.webflowid], // Toggle the visibility for the specific item
+    //     }));
+
+    //     starFun(list.webflowname)
+    // }
+
+    // const starFun = (item: any) => {
+    //     if (isVisible[item.webflowid]) {
+    //         const nameWithoutSpaces = item.webflowname.replace(/\s/g, "");
+    //         const lengthWithoutSpaces = nameWithoutSpaces.length;
+    //         const starsString = '*'.repeat(lengthWithoutSpaces)
+    //         return starsString
+    //     } else {
+    //         return item.webflowname
+    //     }
+    // }
 
     const [openDeletePopup, setOpenDeletePopup] = useState<{ [key: string]: boolean }>({});
 
@@ -120,12 +138,25 @@ const HomePage = () => {
                         <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
 
                             <Typography className="list-accordion-item list-form-name" sx={{ pl: 1 }}>
-                                <ChevronRightRoundedIcon sx={{ fontSize: "24px", color: "white", backgroundColor: "rgb(211, 47, 47)", borderRadius: "50%" }} />
-                                <Typography component={"span"} sx={{ pl: 1 }} className="form-name-overflow" >{item.webflowname}</Typography>
+                                <ChevronRightRoundedIcon sx={{ fontSize: "24px", color: "white", backgroundColor: "rgb(211, 47, 47)", borderRadius: "50%", }} />
+                                <Typography component={"span"} sx={{ pl: 1 }} className="form-name-overflow" >
+                                    {/* <>{starFun(item)}</> */}
+                                    {item.webflowname}
+                                </Typography>
 
                             </Typography>
                             <Box >
-                                <Button variant="outlined" className="list-action-btn" ><VisibilityIcon sx={{ fontSize: "22px" }} /></Button>
+                                {/* {!isVisible[item.webflowid] ?
+                                    <>
+                                        <Button variant="outlined" className="list-action-btn" id={item.webflowid} onClick={() => onClickToggleVisibility(item)}><VisibilityIcon sx={{ fontSize: "22px" }} /></Button>
+                                    </>
+                                    :
+                                    <>
+                                        <Button variant="outlined" className="list-action-btn" id={item.webflowid} onClick={() => onClickToggleVisibility(item)}><VisibilityOffRoundedIcon sx={{ fontSize: "22px" }} /></Button>
+                                    </>
+
+                                } */}
+
                                 <Button variant="outlined" className="list-action-btn" onClick={() => {
                                     onClickEditBtn(item.webflowid)
                                 }}><EditIcon sx={{ fontSize: "22px" }} /></Button>

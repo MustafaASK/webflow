@@ -354,7 +354,7 @@ const AddForm = () => {
     }
   })
 
-  const submitData = (values:any) => {
+  const submitData = (values: any) => {
     // console.log(JSON.stringify(values, null, 2));
     let nodesObject = generateNormalizedObject(
       state?.nodesData,
@@ -375,7 +375,7 @@ const AddForm = () => {
       .then((response: any) => {
         // setTeamLeads(response.data);
         console.log('getlistdataResponse:', response.data);
-        if(response.data.Success){
+        if (response.data.Success) {
           navigate('/')
         }
 
@@ -416,22 +416,26 @@ const AddForm = () => {
             <Box className='top-container'>
               <Box className='top-input-container' >
                 <ArrowBackRoundedIcon className="back-icon" onClick={onClickBackIcon} />
-                <Box>
+                <Box sx={{ height: '45px' }}>
                   <TextField variant="outlined"
                     value={formik.values.webformname}
                     id="webformname" name="webformname"
                     placeholder="Webformname"
-                    onChange={formik.handleChange} />
-                  {formik.errors.webformname ? <div className="error-msg">{formik.errors.webformname}</div> : null}
+                    spellCheck='false'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur} />
+                  {(formik.errors.webformname && formik.touched.webformname) ? <div className="error-msg">{formik.errors.webformname}</div> : null}
                 </Box>
-                <Box>
+                <Box sx={{ height: '45px' }}>
                   <TextField variant="outlined"
                     value={formik.values.description}
                     id="description"
                     name="description"
                     placeholder="Description"
-                    onChange={formik.handleChange} />
-                  {formik.errors.description ? <div className="error-msg">{formik.errors.description}</div> : null}
+                    spellCheck='false'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur} />
+                  {(formik.errors.description && formik.touched.description) ? <div className="error-msg">{formik.errors.description}</div> : null}
                 </Box>
               </Box>
               <Button
