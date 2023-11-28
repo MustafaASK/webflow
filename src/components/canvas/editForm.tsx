@@ -354,7 +354,7 @@ const EditForm = () => {
         // setTeamLeads(response.data);
         console.log('getlistbyidResponse:', response.data);
         formik.setValues({ "editwebformname": response.data.webflowname, "editdescription": "demo" });
-        let { nodes, edges } = convertBackendObjectToGraph(response.data.jsom);
+        let { nodes, edges } = convertBackendObjectToGraph(response.data.json);
         updateNodeAndEdge(nodes, edges);
         // formik.setFieldValue(response.data.webflowname,"demo");
 
