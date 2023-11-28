@@ -447,9 +447,9 @@ const AddForm = () => {
               </Button>
             </Box>
             <ReactFlowWrapper />
-            {/* {state.isRightSidebarOpen && (
+            {state.isRightSidebarOpen && (
       <RightSidebarWrapper elementSelected={state?.elementSelected} />
-    )} */}
+    )}
           </ReactFlowContext.Provider>
         </ReactFlowProvider>
       </BaseLayout>
