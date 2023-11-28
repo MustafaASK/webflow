@@ -51,6 +51,8 @@ const ReactFlowWrapper = () => {
   });
 
   const onNodeClick = useCallback((event: any, node: any) => {
+    event.preventDefault()
+    console.log(event, 'eer')
     if (event?.target?.closest(`[data-id="${PREVENT_OPEN_RIGHTSIDEBAR}"]`))
       return;
     if (event.target.classList.contains("MuiBackdrop-root")) return;
