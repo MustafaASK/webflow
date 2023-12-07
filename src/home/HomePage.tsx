@@ -22,6 +22,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { styled } from "@mui/material/styles";
 
+import moment from 'moment';
+
 import logo from '../automationLogo/Accuick Automation.png';
 import pencil from '../automationFlowIcons/Component 19.png';
 import deleteIcon from '../automationFlowIcons/trash.png';
@@ -321,7 +323,7 @@ const HomePage = () => {
 
                                             </TableCell>
                                             <TableCell align="right" className='table-cell-items-descrpt '> {item.desc}</TableCell>
-                                            <TableCell align="right" className='table-cell-items-descrpt '> {item.webflowid}</TableCell>
+                                            <TableCell align="right" className='table-cell-items-descrpt '>   {moment(item.modifyDate).format('DD MMM YYYY')}</TableCell>
                                             <TableCell align="right" >
 
                                                 <Stack className='table-btn-cell'>
@@ -511,7 +513,7 @@ const HomePage = () => {
                         </TableContainer>
                     </Stack>
 
-                    <Typography sx={{ padding: '8px 8px 8px 55px' }}>
+                    <Typography className='showing-text' sx={{ padding: '8px 8px 8px 55px' }}>
                         Showing {listData.length} of {listData.length}
                     </Typography>
                 </Card>

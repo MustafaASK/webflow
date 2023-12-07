@@ -207,6 +207,14 @@
 
 }
 
+.showing-text {
+    color: #666666 !important;
+    font-family: 'Segoe UI' !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+
+}
+
 .list-add-form-btn {
     /* border: 1px solid transparent !important; */
     /* margin: 0px !important; */
