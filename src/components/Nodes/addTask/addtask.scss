@@ -1,0 +1,55 @@
+.input-addtask {
+    .MuiInputBase-input.MuiOutlinedInput-input {
+        color: #1A1A1A !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        width: 100% !important;
+        min-height: 25px !important;
+        font-family: "Segoe UI" !important;
+        padding: "5px 45px 5px 0px" !important;
+    }
+
+    ;
+
+    .MuiInputBase-input::placeholder {
+        color: "#919191" !important;
+        font-size: "14px" !important;
+        font-weight: 600 !important;
+        font-family: "Segoe UI" !important;
+        opacity: 0.5;
+    }
+
+    ;
+
+    .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+        border-color: #146EF6 !important;
+    }
+
+    ;
+
+    .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+        border-color: #146EF6 !important;
+        border-width: 1px !important;
+    }
+
+    ;
+}
+
+.placeholder {
+    margin: -8px !important;
+    font-family: 'Segoe UI' !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+
+.select-addtask:hover .MuiOutlinedInput-notchedOutline {
+    border-color: #146EF6 !important;
+}
+
+.select-addtask:focus-within .MuiOutlinedInput-notchedOutline {
+    border-color: #146EF6 !important;
+}
+
+.MuiFormLabel-root.MuiInputLabel-root.Mui-focused {
+    margin: 0;
+}

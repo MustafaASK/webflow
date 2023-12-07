@@ -1,50 +1,63 @@
 @import "../../assets/style/variable";
+
 .right-sidebar-wrapper {
   .right-sidebar-wrapper-content {
     width: 375px;
+
     .right-sidebar-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid rgb(215, 213, 210);
       padding: 15px 10px;
+
       .right-sidebar-header-left-container {
         display: flex;
         align-items: center;
+
         .right-sidebar-header-left-label {
           margin-left: 10px;
           font-weight: 500;
         }
+
         .right-sidebar-header-left {
           height: 35px;
           width: 35px;
           display: flex;
           align-items: center;
           justify-content: center;
+
           img {
             height: 25px;
           }
+
           &.OUTBOUND {
-            background-color: $background-outbound;
+            // background-color: $background-outbound;
           }
+
           &.INBOUND {
-            background-color: $background-inbound;
+            // background-color: $background-inbound;
           }
+
           &.WRITE_TO_DB {
-            background-color: $background-write;
+            // background-color: $background-write;
           }
+
           &.END {
-            background-color: $background-end;
+            //background-color: $background-end;
           }
+
           &.WAIT {
-            background-color: $background-wait;
+            //background-color: $background-wait;
           }
         }
       }
+
       .right-sidebar-header-right-container {
         cursor: pointer;
       }
     }
+
     .right-sidebar-wrapper-content-children {
       padding: 20px;
     }

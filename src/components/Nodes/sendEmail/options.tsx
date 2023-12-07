@@ -13,6 +13,7 @@ import FormHelperText from "@mui/material/FormHelperText";
 import { SEND_EMAIL_CONSTANT } from "../../../constant/helper";
 import { useReactFlowContext } from "../../../context/reactFlowContext";
 import VariablePopover from "../../variables";
+import { styled } from "@mui/material/styles";
 import "react-quill/dist/quill.snow.css";
 import "./send-email.scss";
 // import NodesJson from "../../../content/nodes.json";
@@ -57,6 +58,38 @@ const formats = [
   "link",
   "image",
 ];
+
+
+const BpIcon = styled("span")(({ theme }) => ({
+  borderRadius: 1,
+  width: 16,
+  height: 16,
+  backgroundColor: "#ffffff",
+}));
+
+const BpCheckedIcon = styled(BpIcon)({
+  backgroundColor: '#146EF6',
+  "&:before": {
+    display: "block",
+    width: 16,
+    height: 16,
+    backgroundImage:
+      "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath" +
+      " fill-rule='evenodd' clip-rule='evenodd' d='M12 5c-.28 0-.53.11-.71.29L7 9.59l-2.29-2.3a1.003 " +
+      "1.003 0 00-1.42 1.42l3 3c.18.18.43.29.71.29s.53-.11.71-.29l5-5A1.003 1.003 0 0012 5z' fill='%23fff'/%3E%3C/svg%3E\")",
+    content: '""',
+  },
+});
+
+const BpCheckboxContainer = styled("div")({
+  ".bp-icon": {
+    border: "1px #CACACC solid",
+  },
+  "& .bp-checkbox:hover .bp-icon": {
+    borderColor: '#146EF6',
+  },
+});
+
 const SendEmailOptions = () => {
   let reactQuillRef = useRef(null);
   let quillRef = useRef(null);
@@ -97,7 +130,7 @@ const SendEmailOptions = () => {
         {/* Template */}
         <Box sx={config}>
           <FormControl fullWidth error={errors?.template}>
-            <InputLabel id="demo-simple-select-label">Template</InputLabel>
+            <InputLabel className="temp-placeholder" id="demo-simple-select-label">Template</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="chooseTemplate"
@@ -133,8 +166,11 @@ const SendEmailOptions = () => {
                 {...params}
                 error={errors?.from}
                 helperText={errors?.from}
-                label="From"
+                className="input-send-email"
                 placeholder="From..."
+                sx={{
+                  p: 0
+                }}
               />
             )}
           />
@@ -143,23 +179,53 @@ const SendEmailOptions = () => {
         <Box sx={config}>
           <FormControlLabel
             control={
-              <Checkbox
-                color="default"
-                checked={isCCChecked}
-                name="isCCChecked"
-                onChange={(event: any) => {
-                  handleEmailUpdate(
-                    nodeId,
-                    SEND_EMAIL_CONSTANT.ISCCCHECKED,
-                    event.target.checked
-                  );
-                  handleEmailUpdate(nodeId, SEND_EMAIL_CONSTANT.CC, []);
-                  handleEmailUpdate(nodeId, SEND_EMAIL_CONSTANT.BCC, []);
-                }}
-              />
+              // <Checkbox
+              //   color="default"
+              //   checked={isCCChecked}
+              //   name="isCCChecked"
+              //   onChange={(event: any) => {
+              //     handleEmailUpdate(
+              //       nodeId,
+              //       SEND_EMAIL_CONSTANT.ISCCCHECKED,
+              //       event.target.checked
+              //     );
+              //     handleEmailUpdate(nodeId, SEND_EMAIL_CONSTANT.CC, []);
+              //     handleEmailUpdate(nodeId, SEND_EMAIL_CONSTANT.BCC, []);
+              //   }}
+              // />
+              <BpCheckboxContainer>
+                <Checkbox
+                  color="default"
+                  checked={isCCChecked}
+                  name="isCCChecked"
+                  onChange={(event: any) => {
+                    handleEmailUpdate(
+                      nodeId,
+                      SEND_EMAIL_CONSTANT.ISCCCHECKED,
+                      event.target.checked
+                    );
+                    handleEmailUpdate(nodeId, SEND_EMAIL_CONSTANT.CC, []);
+                    handleEmailUpdate(nodeId, SEND_EMAIL_CONSTANT.BCC, []);
+                  }}
+                  icon={
+                    <BpIcon className="bp-icon" />
+                  }
+                  checkedIcon={
+                    <BpCheckedIcon
+                      className="bp-icon"
+                      style={{
+                        borderColor: '#146EF6'
+                      }}
+                    />
+                  }
+
+                />
+              </BpCheckboxContainer>
             }
             label="CC & BCC"
           />
+
+
         </Box>
         {/* cc */}
         {isCCChecked && (
@@ -179,9 +245,10 @@ const SendEmailOptions = () => {
                   {...params}
                   error={errors?.cc}
                   helperText={errors?.cc}
-                  label="Cc"
+                  // label="Cc"
                   name="cc"
                   placeholder="Cc..."
+                  className="input-send-email"
                 />
               )}
             />
@@ -205,9 +272,10 @@ const SendEmailOptions = () => {
                   {...params}
                   error={errors?.bcc}
                   helperText={errors?.bcc}
-                  label="Bcc"
+                  //label="Bcc"
                   name="bcc"
                   placeholder="Bcc..."
+                  className="input-send-email"
                 />
               )}
             />
@@ -218,10 +286,11 @@ const SendEmailOptions = () => {
           <FormControl fullWidth>
             <TextField
               id="enterSubject"
-              label="Enter Subject..."
+              placeholder="Enter Subject..."
               variant="outlined"
               value={subject}
               name="subject"
+              className="input-send-email"
               error={errors?.subject}
               helperText={errors?.subject}
               onChange={(event) =>

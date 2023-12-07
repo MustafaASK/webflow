@@ -6,9 +6,12 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import FormHelperText from "@mui/material/FormHelperText";
+import { Button, Typography } from '@mui/material'
 import { useReactFlowContext } from "../../../context/reactFlowContext";
 // import NodesJson from "../../../content/nodes.json";
 // const { NODES } = NodesJson;
+import './delay.scss'
+
 const DelayOptions = () => {
   const { state, handleDelayUpdate } = useReactFlowContext();
   const { elementSelected, errorList } = state || {};
@@ -20,14 +23,13 @@ const DelayOptions = () => {
       <Box
         sx={{
           display: "flex",
+          flexDirection: 'row',
           justifyContent: "space-between",
           gap: "5px",
         }}
       >
         <FormControl fullWidth>
           <TextField
-            label="Days"
-            multiline
             error={errors?.days}
             helperText={errors?.days}
             value={days}
@@ -42,26 +44,39 @@ const DelayOptions = () => {
                 handleDelayUpdate(nodeId, "DAYS", "");
               }
             }}
+            placeholder="Enter value"
+            className="input-delay"
           />
         </FormControl>
+
         <FormControl fullWidth error={errors?.type}>
-          <InputLabel id="demo-simple-select-label">Type</InputLabel>
+          <InputLabel id="demo-simple-select-label" className="placeholder">Type</InputLabel>
+
           <Select
             labelId="demo-simple-select-delay"
             id="chooseDelay"
+            label='Type'
             value={type}
-            label="Type"
+            className="select-delay"
             name="type"
             onChange={(event: any) =>
               handleDelayUpdate(nodeId, "TYPE", event.target.value)
             }
           >
+
             <MenuItem value={"week"}>Weeks</MenuItem>
             <MenuItem value={"day"}>Days</MenuItem>
           </Select>
           <FormHelperText>{errors?.type}</FormHelperText>
         </FormControl>
       </Box>
+
+      {/* <Button
+        className="delay-save-btn"
+        sx={{ mt: '100px', ml: '70%' }}
+      >
+        Save
+      </Button> */}
     </div>
   );
 };

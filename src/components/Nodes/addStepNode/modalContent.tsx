@@ -49,7 +49,8 @@ const ActionItems = ({
     >
       <div
         className={classnames({
-          "node-container-action-item-left": true,
+          "node-container-action-item-left ": true,
+          "a": true,
           [node?.categoryType]: true,
         })}
       >

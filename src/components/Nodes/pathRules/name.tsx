@@ -18,9 +18,10 @@ const PathName = ({ nodeId }: { nodeId: string }) => {
       <FormControl fullWidth>
         <TextField
           id="textData"
-          label="Enter path name..."
+          placeholder="Enter path name..."
           variant="outlined"
           value={name}
+          className="input-path-rule"
           onChange={(event) => setName(event.target.value)}
           onBlur={() => {
             if (name?.trim()) {

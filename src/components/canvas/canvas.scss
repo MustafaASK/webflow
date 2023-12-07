@@ -4,13 +4,21 @@
     justify-content: space-between !important;
     align-items: center !important;
     padding-right: 5px;
+    width: 100%;
+    border-bottom: 1px solid #E6E6E6;
 }
 
 .top-input-container {
     display: flex !important;
+    flex-direction: column !important;
+    //align-items: center !important;
+    padding: 8px;
+}
+
+.top-btn-container {
+    display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    padding: 8px;
 }
 
 .back-icon {
@@ -27,6 +35,19 @@
 
 .MuiFormControl-root.MuiTextField-root {
     margin-right: 5px;
+}
+
+.cancel-btn {
+    text-transform: capitalize !important;
+    color: #1a1a1a !important;
+    height: 35px;
+    width: 100px;
+    border-color: #cacacc !important;
+}
+
+.cancel-btn:hover {
+    border-color: #146ef6 !important;
+    color: #146ef6 !important;
 }
 
 .submit-btn {
@@ -46,5 +67,70 @@
     font-weight: 500;
     font-size: 9px;
     color: red;
+    padding-left: 8px;
 
+}
+
+.header-logo {
+    color: #146ef6;
+    font-size: 16px !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 600 !important;
+}
+
+.header-logo-2 {
+    color: #1a1a1a;
+    padding-left: 3px;
+}
+
+
+
+
+.input-header {
+    .MuiInputBase-input.MuiOutlinedInput-input {
+        color: #1A1A1A !important;
+        font-size: 17px !important;
+        font-weight: 600 !important;
+        width: 100% !important;
+        min-height: 25px !important;
+        font-family: "Segoe UI" !important;
+        padding: "5px 45px 5px 0px" !important;
+    }
+
+    ;
+
+    .MuiInputBase-input::placeholder {
+        color: "#919191" !important;
+        font-size: "14px" !important;
+        font-weight: 600 !important;
+        font-family: "Segoe UI" !important;
+        opacity: 0.5;
+    }
+
+    ;
+}
+
+
+.input-header-2 {
+    .MuiInputBase-input.MuiOutlinedInput-input {
+        color: #1A1A1A !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        width: 100% !important;
+        min-height: 25px !important;
+        font-family: "Segoe UI" !important;
+        padding: "5px 45px 5px 0px" !important;
+    }
+
+    ;
+
+    .MuiInputBase-input::placeholder {
+        color: "#919191" !important;
+        font-size: "14px" !important;
+        font-weight: 600 !important;
+        font-family: "Segoe UI" !important;
+        opacity: 0.5;
+    }
+
+    ;
 }

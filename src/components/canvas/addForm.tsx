@@ -15,7 +15,7 @@ import {
   generateNormalizedObject,
   convertBackendObjectToGraph,
 } from "./helper";
-import { Box, TextField, Button } from '@mui/material'
+import { Box, TextField, Button, Typography } from '@mui/material'
 import { initialEdges, initialNodes } from "../../content/template/initalData";
 import { NODE_TYPES } from "../../constant/nodeTypes";
 import { validateGraph } from "./validation";
@@ -24,7 +24,7 @@ import { useNavigate } from "react-router-dom";
 import apiService from "../../api/apiService";
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-
+import logo from '../../automationLogo/Accuick Automation.png'
 
 import './canvas.scss'
 
@@ -414,42 +414,74 @@ const AddForm = () => {
             }}
           >
             <Box className='top-container'>
-              <Box className='top-input-container' >
-                <ArrowBackRoundedIcon className="back-icon" onClick={onClickBackIcon} />
+              <Box sx={{ pl: '20px', cursor: 'pointer' }} onClick={onClickBackIcon}>
+                {/* <ArrowBackRoundedIcon className="back-icon" onClick={onClickBackIcon} /> */}
+
+                <img src={logo} alt='' />
+              </Box>
+              <Box className='top-input-container'>
                 <Box sx={{ height: '45px' }}>
-                  <TextField variant="outlined"
+                  <TextField
                     value={formik.values.webformname}
                     id="webformname" name="webformname"
                     placeholder="Webformname"
+                    className="input-header"
                     spellCheck='false'
                     onChange={formik.handleChange}
-                    onBlur={formik.handleBlur} />
+                    onBlur={formik.handleBlur}
+                    sx={{
+                      '& .MuiOutlinedInput-notchedOutline': {
+                        border: 'none !important',
+                      },
+                    }}
+
+                  />
                   {(formik.errors.webformname && formik.touched.webformname) ? <div className="error-msg">{formik.errors.webformname}</div> : null}
                 </Box>
                 <Box sx={{ height: '45px' }}>
-                  <TextField variant="outlined"
+                  <TextField
                     value={formik.values.description}
                     id="description"
                     name="description"
                     placeholder="Description"
                     spellCheck='false'
+                    className="input-header-2"
                     onChange={formik.handleChange}
-                    onBlur={formik.handleBlur} />
+                    onBlur={formik.handleBlur}
+                    sx={{
+                      '& .MuiOutlinedInput-notchedOutline': {
+                        border: 'none !important',
+                      },
+                    }}
+                  />
                   {(formik.errors.description && formik.touched.description) ? <div className="error-msg">{formik.errors.description}</div> : null}
                 </Box>
               </Box>
-              <Button
-                type="submit"
-                // onClick={submitData}
-                className="submit-btn"
-                variant="contained">
-                Save
-              </Button>
+
+              <Box className='top-btn-container' sx={{ gap: 1, pr: 2 }}>
+
+                <Button
+                  variant="outlined"
+                  onClick={onClickBackIcon}
+                  className="cancel-btn"
+                >
+                  Cancel
+                </Button>
+
+                <Button
+                  type="submit"
+                  // onClick={submitData}
+                  className="submit-btn"
+                  variant="contained">
+                  Save
+                </Button>
+
+              </Box>
             </Box>
             <ReactFlowWrapper />
             {state.isRightSidebarOpen && (
-      <RightSidebarWrapper elementSelected={state?.elementSelected} />
-    )}
+              <RightSidebarWrapper elementSelected={state?.elementSelected} />
+            )}
           </ReactFlowContext.Provider>
         </ReactFlowProvider>
       </BaseLayout>

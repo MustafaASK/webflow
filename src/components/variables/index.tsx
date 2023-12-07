@@ -28,12 +28,20 @@ const VariablePopover = ({
         "button-inside-quill-wrapper": isFromQuill,
       })}
     >
-      <Button variant="text" onClick={handleClick}>
-        <Box sx={{ marginRight: "5px", position: "relative", top: "2px" }}>
-          <AddCircleOutlineIcon />
-        </Box>
-        Merge Fields
-      </Button>
+      <Box className='send-text-btns-container'>
+        <Button variant="text" onClick={handleClick} sx={{ textTransform: 'capitalize' }}>
+          <Box sx={{ marginRight: "5px", position: "relative", top: "2px", }}>
+            <AddCircleOutlineIcon />
+          </Box>
+          Merge Fields
+        </Button>
+
+        {/* <Button
+          className="send-text-save-btn"
+        >
+          Save
+        </Button> */}
+      </Box>
       <Menu
         id="demo-positioned-menu"
         aria-labelledby="demo-positioned-button"

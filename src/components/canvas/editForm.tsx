@@ -22,7 +22,7 @@ import {
   generateNormalizedObject,
   convertBackendObjectToGraph,
 } from "./helper";
-import { Box, TextField, Button } from '@mui/material'
+import { Box, TextField, Button, Typography } from '@mui/material'
 import { initialEdges, initialNodes } from "../../content/template/initalData";
 import { NODE_TYPES } from "../../constant/nodeTypes";
 import { validateGraph } from "./validation";
@@ -31,6 +31,7 @@ import { useNavigate } from "react-router-dom";
 import apiService from "../../api/apiService";
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import logo from '../../automationLogo/Accuick Automation.png'
 
 import './canvas.scss'
 
@@ -445,16 +446,30 @@ const EditForm = () => {
             }}
           >
             <Box className='top-container'>
+
+              <Box sx={{ pl: '20px', cursor: 'pointer' }} onClick={onClickBackIcon}>
+                {/* <ArrowBackRoundedIcon className="back-icon" onClick={onClickBackIcon} /> */}
+
+                <img src={logo} alt='' />
+
+              </Box>
+
               <Box className='top-input-container' >
-                <ArrowBackRoundedIcon className="back-icon" onClick={onClickBackIcon} />
                 <Box sx={{ height: '45px' }}>
                   <TextField variant="outlined"
                     value={formik.values.editwebformname}
                     id="editwebformname" name="editwebformname"
+                    className="input-header"
                     placeholder="Webformname"
                     spellCheck='false'
                     onChange={formik.handleChange}
-                    onBlur={formik.handleBlur} />
+                    onBlur={formik.handleBlur}
+                    sx={{
+                      '& .MuiOutlinedInput-notchedOutline': {
+                        border: 'none !important',
+                      },
+                    }}
+                  />
                   {(formik.errors.editwebformname && formik.touched.editwebformname) ? <div className="error-msg">{formik.errors.editwebformname}</div> : null}
                 </Box>
                 <Box sx={{ height: '45px' }}>
@@ -463,19 +478,38 @@ const EditForm = () => {
                     id="editdescription"
                     name="editdescription"
                     placeholder="Description"
+                    className="input-header-2"
                     spellCheck='false'
                     onChange={formik.handleChange}
-                    onBlur={formik.handleBlur} />
+                    onBlur={formik.handleBlur}
+                    sx={{
+                      '& .MuiOutlinedInput-notchedOutline': {
+                        border: 'none !important',
+                      },
+                    }}
+                  />
                   {(formik.errors.editdescription && formik.touched.editdescription) ? <div className="error-msg">{formik.errors.editdescription}</div> : null}
                 </Box>
               </Box>
-              <Button
-                type="submit"
-                // onClick={submitData}
-                className="submit-btn"
-                variant="contained">
-                Save
-              </Button>
+
+              <Box className='top-btn-container' sx={{ gap: 1, pr: 2 }}>
+
+                <Button
+                  variant="outlined"
+                  onClick={onClickBackIcon}
+                  className="cancel-btn"
+                >
+                  Cancel
+                </Button>
+
+                <Button
+                  type="submit"
+                  // onClick={submitData}
+                  className="submit-btn"
+                  variant="contained">
+                  Save
+                </Button>
+              </Box>
             </Box>
             <ReactFlowWrapper />
             {state.isRightSidebarOpen && (

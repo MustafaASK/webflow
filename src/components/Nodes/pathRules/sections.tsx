@@ -65,16 +65,22 @@ const Section = ({
               marginBottom: "20px",
             }}
           >
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">
+            <FormControl fullWidth >
+              <InputLabel id="demo-simple-select-label" className="path-placeholder">
                 Choose field...
               </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="chooseField"
                 value={item.field}
+                sx={{
+                  '& .MuiSelect-select.MuiInputBase-input.MuiOutlinedInput-input': {
+                    background: '#ffffff'
+                  }
+                }}
                 label="Choose field..."
                 onChange={handleField}
+                className="select-path-rule"
               >
                 {/* <MenuItem value={10}>Ten</MenuItem> */}
               </Select>
@@ -86,15 +92,22 @@ const Section = ({
             }}
           >
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">
+              <InputLabel id="demo-simple-select-label" className="path-placeholder">
                 Choose condition...
               </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="chooseCondition"
+                sx={{
+                  '& .MuiSelect-select.MuiInputBase-input.MuiOutlinedInput-input': {
+                    background: '#ffffff'
+                  }
+                }}
                 value={item.condition}
                 label="Choose condition..."
                 onChange={handleCondition}
+                className="select-path-rule"
+
               >
                 <MenuItem value={1}>(Text) Contains</MenuItem>
                 <MenuItem value={2}>(Text) Does not contain</MenuItem>
@@ -126,31 +139,32 @@ const Section = ({
             <FormControl fullWidth>
               <TextField
                 id="textData"
-                label="Enter text..."
+                placeholder="Enter text..."
                 variant="outlined"
                 value={item.text}
                 onChange={handleTextChange}
+                className="input-path-rule"
               />
             </FormControl>
           </Box>
         </Box>
         <Box
           sx={{
-            border: "1px solid #95928e",
+            // border: "1px solid #95928e",
             height: "40px",
             width: "40px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             cursor: "pointer",
-            ":hover": {
-              backgroundColor: "#fffdf9",
-              boxShadow: "rgba(0, 0, 0, 0.2) 0px 5px 10px 0px",
-            },
+            // ":hover": {
+            //   backgroundColor: "#fffdf9",
+            //   boxShadow: "rgba(0, 0, 0, 0.2) 0px 5px 10px 0px",
+            // },
           }}
           onClick={() => handleDelete(ruleId, item.id)}
         >
-          <CloseIcon />
+          <CloseIcon sx={{ color: '#9DAABF', fontSize: '20px' }} />
         </Box>
       </Box>
     </Box>

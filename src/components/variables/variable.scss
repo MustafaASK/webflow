@@ -3,3 +3,19 @@
     font-size: 6px;
   }
 }
+
+.send-text-btns-container {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.send-text-save-btn {
+  text-transform: capitalize !important;
+  background-color: #146ef6 !important;
+  height: 35px;
+  font-family: 'Segoe UI' !important;
+  width: 100px;
+  color: #ffffff !important;
+}

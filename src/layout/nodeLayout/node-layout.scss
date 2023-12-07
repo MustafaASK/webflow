@@ -1,4 +1,5 @@
 @import "../../assets/style/variable";
+
 .node-container-wrapper {
   .node-container-default {
     display: flex;
@@ -15,15 +16,18 @@
     position: relative;
     padding: 10px;
     width: 500px;
+
     &:hover {
       box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px 0px;
       cursor: pointer;
     }
+
     &.node-container-path {
       border: 1px solid rgb(64, 63, 62);
       background-color: rgb(64, 63, 62);
       color: rgb(255, 253, 249);
     }
+
     .node-container-left {
       display: flex;
       -webkit-box-align: center;
@@ -34,32 +38,39 @@
       width: 60px;
       min-width: 60px;
       height: 60px;
-      border: 1px solid rgb(230, 230, 230);
-      border-radius: 8px;
+      //border: 1px solid rgb(230, 230, 230);
+      border-radius: 50%;
       box-sizing: border-box;
       box-shadow: none;
-      background-color: #fffdf9;
+      background-color: #F5F5F5;
+
       &.OUTBOUND {
-        background-color: $background-outbound;
+        // background-color: $background-outbound;
       }
+
       &.INBOUND {
-        background-color: $background-inbound;
+        //background-color: $background-inbound;
       }
+
       &.WRITE_TO_DB {
-        background-color: $background-write;
+        //background-color: $background-write;
       }
+
       &.END {
-        background-color: $background-end;
+        //background-color: $background-end;
       }
+
       &.WAIT {
-        background-color: $background-wait;
+        //background-color: $background-wait;
       }
+
       .node-container-left-error {
         position: absolute;
         right: -12px;
         top: -10px;
       }
     }
+
     .node-container-middle {
       display: flex;
       flex-direction: column;
@@ -68,12 +79,14 @@
       width: 100%;
       margin-left: 20px;
       justify-content: center;
+
       &-centralize {
         align-items: center;
         justify-content: center;
         margin-left: 0;
       }
     }
+
     .node-container-right {
       display: flex;
       -webkit-box-align: center;
@@ -82,14 +95,17 @@
       margin-left: auto;
       padding-left: 20px;
     }
+
     &-path-branch {
       border: none;
       background-color: transparent;
       padding: 0;
+
       &:hover {
         box-shadow: none;
       }
     }
+
     .node-container-hovererd {
       position: absolute;
       height: 80px;
@@ -103,6 +119,7 @@
       align-items: center;
       justify-content: center;
     }
+
     .node-container-hover-icon {
       position: absolute;
       left: -30px;
@@ -116,6 +133,7 @@
     font-weight: 600;
     color: rgb(45, 46, 46);
   }
+
   .node-body {
     font-size: 24px;
     line-height: 30px;
@@ -124,6 +142,7 @@
     display: flex;
     align-items: center;
   }
+
   .node-container-path {
     .node-header {
       color: rgb(255, 253, 249);
@@ -153,6 +172,7 @@
     padding: 8px;
     transition: background-color 300ms ease-in-out 0s;
     border: none;
+
     &::before {
       content: "";
       position: absolute;
@@ -164,22 +184,27 @@
       transition-timing-function: ease-in-out;
       transition-duration: 200ms;
     }
+
     &:hover {
       outline: none;
       background-color: rgb(45, 46, 46);
+
       &::before {
         border-color: rgb(45, 46, 46);
         inset: -5px;
       }
-      + .node-empty-path-branch-tooltip {
+
+      +.node-empty-path-branch-tooltip {
         display: flex;
       }
     }
+
     img {
       height: 18px;
       width: 18px;
     }
   }
+
   .node-empty-path-branch-tooltip {
     position: absolute;
     display: none;
@@ -191,6 +216,7 @@
     left: calc(50% + 30px);
     height: 100%;
     top: 0px;
+
     &-content {
       pointer-events: none;
       font-size: 16px;
@@ -207,10 +233,11 @@
       transition: opacity 300ms ease-in-out 0s;
     }
   }
+
   .node-empty-add-step-branch-container {
     background: transparent;
-    width: 32px;
-    height: 32px;
+    width: 46px;
+    height: 40px;
     display: flex;
     -webkit-box-pack: center;
     justify-content: center;
@@ -220,37 +247,45 @@
     overflow: visible;
     position: relative;
     z-index: 10000;
+
     .node-empty-add-step-branch {
       background-color: rgb(247, 245, 242);
-      width: 27px;
-      height: 27px;
+      width: 46px;
+      height: 46px;
       border: 2px solid rgb(247, 245, 242);
-      border-radius: 10px;
-      color: rgb(61, 69, 146);
+      border-radius: 3px;
+      //color: rgb(61, 69, 146);
       display: flex;
       -webkit-box-align: center;
       align-items: center;
       -webkit-box-pack: center;
       justify-content: center;
       cursor: pointer;
-      border-radius: 50%;
+      //border-radius: 50%;
       transition: background-color 300ms ease-in-out 0s,
         color 300ms ease-in-out 0s;
-      background-image: url("../../assets/img/plusBlue.svg");
+      background-image: url("../../automationFlowIcons/add@3x.svg");
+
       &:hover {
-        outline: none;
-        color: rgb(255, 253, 249);
-        background-color: rgb(61, 69, 146);
-        background-image: url("../../assets/img/plus.svg");
-      }
-    }
-    &:hover {
-      + .node-empty-path-branch-tooltip {
-        display: flex;
+        //outline: none;
+        //color: red;
+        border-color: #146EF6;
+        background-image: url("../../automationFlowIcons/add@3x.svg");
+        // fill: red !important;
+        //svg path {
+        //
+        /* Change the fill color of the path inside the SVG */
       }
     }
   }
+
+  &:hover {
+    +.node-empty-path-branch-tooltip {
+      display: flex;
+    }
+  }
 }
+
 
 #coverup {
   background: white;

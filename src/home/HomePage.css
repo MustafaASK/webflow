@@ -1,10 +1,210 @@
+.header-container {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 10vh;
+    border-bottom: 2px solid #F7F7F7;
+    position: sticky !important;
+    overflow: hidden !important;
+}
+
+.profile-name-logo-container {
+    background-color: #F7F7F7;
+    border-radius: 50%;
+    padding: 5px;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.profile-name-logo {
+    font-size: 16px !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 600 !important;
+}
+
+.profile-container {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+}
+
+.profile-container-name {
+    display: flex !important;
+    flex-direction: row !important;
+}
+
+.table-header-container {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 8px;
+    border-bottom: 1px solid #000000;
+}
+
+.table-header-name {
+    font-size: 20px !important;
+    color: #333333 !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 600 !important;
+}
+
+.add-form-btn {
+    font-size: 14px !important;
+    color: #ffffff !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 600 !important;
+    text-transform: capitalize !important;
+    background-color: #146ef6 !important;
+}
+
+.add-form-btn:hover {
+    background-color: #146ef6 !important;
+}
+
+.MuiPaper-root.MuiTableContainer-root {
+    box-shadow: 0px 0px 0px 0px !important;
+}
+
+.MuiTableCell-root {
+    padding: 5px !important;
+}
+
+.table-header {
+    font-size: 16px !important;
+    color: #333333 !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 600 !important;
+}
+
+.pr {
+    padding-right: 25px !important;
+}
+
+.table-cell-items {
+    font-size: 14px !important;
+    color: #333333 !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 600 !important;
+    padding-right: 25px !important;
+}
+
+.table-cell-items-descrpt {
+    font-size: 14px !important;
+    color: #333333 !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 400 !important;
+    padding-right: 25px !important;
+}
+
+.table-btn-cell {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+    align-items: flex-end !important;
+    padding-bottom: 1px;
+    padding-right: 20px;
+}
+
+.table-btn-cell-edit-container {
+    height: 30px;
+    width: 30px;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.edit-btn:hover img {
+    filter: brightness(0) invert(1);
+    /* Adjust the brightness value as needed */
+}
+
+.edit-btn:hover {
+    background-color: #F09959 !important;
+
+}
+
+.delete-btn:hover img {
+    filter: brightness(0) invert(1);
+    /* Adjust the brightness value as needed */
+}
+
+.delete-btn:hover {
+    background-color: #DD422D !important;
+}
+
+.right-arrow-btn:hover img {
+    filter: brightness(0) invert(1);
+    /* Adjust the brightness value as needed */
+}
+
+.right-arrow-btn:hover {
+    background-color: #146ef6 !important;
+}
+
 .home-container {
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
-    margin-top: 15%;
+    /* margin-top: 15%; */
     justify-content: center;
+    overflow-y: scroll;
+    height: 89vh;
+    margin-top: 5px;
+}
+
+.table-bottom {
+    border-bottom: 1px solid #D3D3D3;
+}
+
+.MuiPaper-root.MuiTableContainer-root {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.rename-popup-card {
+    width: 475px !important;
+    height: 200px !important;
+}
+
+.rename-popup-card-header {
+    color: #1A1A1A !important;
+    font-family: 'Segoe UI' !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    padding: 12px 15px 12px 20px !important;
+}
+
+.rename-popup-card-header-container.MuiTypography-root.MuiDialogTitle-root {
+    padding: 0px !important;
+    border-bottom: 1px solid #D3D3D3 !important;
+}
+
+.rename-popup-input-container {
+    display: flex !important;
+    flex-direction: column !important;
+    /* align-items: center !important;
+    justify-content: center !important; */
+}
+
+.rename-popup-card-btn-container.MuiDialogActions-root {
+    padding: 8px 8px 8px 10px !important;
+    border-top: 1px solid #D3D3D3;
+}
+
+.input-label {
+    color: #1A1A1A !important;
+    font-family: 'Segoe UI' !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+
 }
 
 .list-add-form-btn {

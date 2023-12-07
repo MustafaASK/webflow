@@ -14,6 +14,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { useReactFlowContext } from "../../../context/reactFlowContext";
+import './addtask.scss'
 
 const config = {
   marginBottom: "20px",
@@ -42,8 +43,9 @@ const AddTaskoptions = () => {
           <FormControl fullWidth>
             <TextField
               id="enterTitle"
-              label="Title"
+              placeholder="Title"
               variant="outlined"
+              className="input-addtask"
               value={title}
               name="title"
               error={errors?.title}
@@ -67,13 +69,15 @@ const AddTaskoptions = () => {
           <Box
             sx={{
               width: "50%",
+
             }}
           >
             <FormControl fullWidth error={errors?.type}>
-              <InputLabel id="task-title-select-label">Type</InputLabel>
+              <InputLabel id="task-title-select-label" className="placeholder">Type</InputLabel>
               <Select
                 labelId="task-title-select-label"
                 id="chooseType"
+                className="select-addtask"
                 value={type}
                 label="Type"
                 name="type"
@@ -92,9 +96,10 @@ const AddTaskoptions = () => {
             }}
           >
             <FormControl fullWidth error={errors?.priority}>
-              <InputLabel id="task-priority-select-label">Priority</InputLabel>
+              <InputLabel id="task-priority-select-label" className="placeholder">Priority</InputLabel>
               <Select
                 labelId="task-priority-select-label"
+                className="select-addtask"
                 id="choosePriority"
                 value={priority}
                 label="Priority"
@@ -113,12 +118,13 @@ const AddTaskoptions = () => {
         {/*Assigned to */}
         <Box sx={config}>
           <FormControl fullWidth error={errors?.assignedTo}>
-            <InputLabel id="task-assigned-to-select-label">
+            <InputLabel id="task-assigned-to-select-label" className="placeholder">
               Assigned to
             </InputLabel>
             <Select
               labelId="task-title-select-label"
               id="chooseAssignedTo"
+              className="select-addtask"
               value={assignedTo}
               label="Assigned to"
               name="assignedTo"
@@ -133,7 +139,7 @@ const AddTaskoptions = () => {
           </FormControl>
         </Box>
         {/* Date section start */}
-        <Box sx={config}>
+        <Box sx={config} >
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={["DateTimePicker"]}>
               <DateTimePicker
@@ -167,7 +173,8 @@ const AddTaskoptions = () => {
         <Box sx={config}>
           <FormControl fullWidth>
             <TextField
-              label="Notes"
+              placeholder="Notes"
+              className="input-addtask"
               multiline
               value={notes}
               rows={4}

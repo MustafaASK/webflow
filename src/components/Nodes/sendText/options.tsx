@@ -10,6 +10,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import VariablePopover from "../../variables";
 import { useReactFlowContext } from "../../../context/reactFlowContext";
+import './sendText.scss'
 // import NodesJson from "../../../content/nodes.json";
 // const { NODES } = NodesJson;
 const SendTextOptions = () => {
@@ -55,11 +56,12 @@ const SendTextOptions = () => {
         <TextField
           inputRef={ref}
           onBlur={handleBlur}
-          label="Send Text"
           multiline
           value={textValue}
           rows={4}
           maxRows={6}
+          placeholder="Enter text message"
+          className="input-sendtext "
           onChange={(event: any) => {
             setTargetPlace(event.target.selectionStart);
             setTextValue(event.target.value);

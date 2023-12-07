@@ -1,17 +1,17 @@
 import { v4 as uuidv4 } from "uuid";
-import SEND_NOTIFICATION from "../assets/img/bell.svg";
-import SEND_EMAIL from "../assets/img/email.svg";
-import SEND_TEXT from "../assets/img/chat.svg";
+import SEND_NOTIFICATION from "../automationFlowIcons/bxs-bell-ring.png";
+import SEND_EMAIL from "../automationFlowIcons/email.png";
+import SEND_TEXT from "../automationFlowIcons/Group.png";
 import ADD_WAIT from "../assets/img/stopwatch.svg";
-import SEND_FORM from "../assets/img/survey.svg";
-import ADD_NOTE from "../assets/img/note.svg";
-import ADD_TASK from "../assets/img/tick.svg";
-import UPDATE_CANDIDATE from "../assets/img/candidate.svg";
-import END_AUTOMATION from "../assets/img/hexagon-fill.svg";
-import TRIGGER from "../assets/img/trigger.svg";
-import PATH from "../assets/img/path.png";
+import SEND_FORM from "../automationFlowIcons/Vector.png";
+import ADD_NOTE from "../automationFlowIcons/stickynote.png";
+import ADD_TASK from "../automationFlowIcons/Vector-1.png";
+import UPDATE_CANDIDATE from "../automationFlowIcons/user.png";
+import END_AUTOMATION from "../automationFlowIcons/Vector-2.png";
+import TRIGGER from "../automationFlowIcons/bolt-solid.png";
+import PATH from "../automationFlowIcons/Group-1.png";
 import PATH_RULES from "../assets/img/path.png";
-import DELAY from "../assets/img/delay.svg";
+import DELAY from "../automationFlowIcons/hourglass.png";
 export const generateUUID = () => {
   return uuidv4();
 };
