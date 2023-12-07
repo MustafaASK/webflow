@@ -317,13 +317,13 @@ const HomePage = () => {
                                                     />
                                                 </BpCheckboxContainer> */}
 
-                                                <Typography className='table-cell-items' sx={{ pl: 1 }}>
+                                                <Typography className='table-cell-items-name' sx={{ pl: 1 }}>
                                                     {item.webflowname}
                                                 </Typography>
 
                                             </TableCell>
-                                            <TableCell align="right" className='table-cell-items-descrpt '> {item.desc}</TableCell>
-                                            <TableCell align="right" className='table-cell-items-descrpt '>   {moment(item.modifyDate).format('DD MMM YYYY')}</TableCell>
+                                            <TableCell align="right" className='table-cell-items-desc-date table-cell-items-descrpt '> {item.desc}</TableCell>
+                                            <TableCell align="right" className='table-cell-items-desc-date table-cell-items-date '>   {moment(item.modifyDate).format('DD MMM YYYY')}</TableCell>
                                             <TableCell align="right" >
 
                                                 <Stack className='table-btn-cell'>

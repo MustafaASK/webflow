@@ -84,7 +84,7 @@
     padding-right: 25px !important;
 }
 
-.table-cell-items {
+.table-cell-items-name {
     font-size: 14px !important;
     color: #333333 !important;
     font-family: 'Segoe UI' !important;
@@ -92,12 +92,19 @@
     padding-right: 25px !important;
 }
 
-.table-cell-items-descrpt {
+.table-cell-items-desc-date {
     font-size: 14px !important;
     color: #333333 !important;
     font-family: 'Segoe UI' !important;
     font-weight: 400 !important;
+}
+
+.table-cell-items-descrpt {
     padding-right: 25px !important;
+}
+
+.table-cell-items-date {
+    padding-right: 8px !important;
 }
 
 .table-btn-cell {
