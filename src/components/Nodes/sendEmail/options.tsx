@@ -39,8 +39,8 @@ const modules = {
 };
 
 const top100Films = [
-  { name: "Phani", address: "phanik@ovahq.com" },
-  { name: "Anil", address: "akunde@ovahq.com" },
+  { name: "Phani", address: "onboardtest@askconsulting.com" },
+  { name: "Anil", address: "onboardtest@askconsulting.com" },
 ];
 
 const formats = [
