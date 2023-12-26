@@ -90,7 +90,10 @@
       "data": {
         "payload": {
           "template": "",
-          "from": { "title": "", "year": null },
+          "from": {
+            "name": "",
+            "address": null
+          },
           "cc": [],
           "isCCChecked": false,
           "bcc": [],

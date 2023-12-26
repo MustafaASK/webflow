@@ -45,7 +45,20 @@ class ApiService {
             header
         );
     }
+    assignWebflowUser(saveData: any): any {
+        const header: any = {
+            'Content-Type': 'application/json;charset=UTF-8',
+            'Access-Control-Allow-Origin': '*',
+        };
 
+        const apiUrl = Url171 + 'WebflowService/assignWebFlowToUser '
+
+        return axios.post(
+            apiUrl,
+            saveData,
+            header
+        );
+    }
     deletewebflow(deleteid: any): any {
         const header: any = {
             'Content-Type': 'application/json;charset=UTF-8',

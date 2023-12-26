@@ -5,7 +5,7 @@ export const sendEmailSchema = yup.object({
   from: yup
     .object()
     .test("oneOfRequired", "Please select from field", function (item) {
-      return item?.title;
+      return item?.name;
     }),
   cc: yup.array().test("oneOfRequired", "Please select cc", function (item) {
     return item?.length;

@@ -39,10 +39,8 @@ const modules = {
 };
 
 const top100Films = [
-  { title: "The Shawshank Redemption", year: 1994 },
-  { title: "The Godfather", year: 1972 },
-  { title: "The Godfather: Part II", year: 1974 },
-  { title: "The Dark Knight", year: 2008 },
+  { name: "Phani", address: "phanik@ovahq.com" },
+  { name: "Anil", address: "akunde@ovahq.com" },
 ];
 
 const formats = [
@@ -156,7 +154,7 @@ const SendEmailOptions = () => {
             id="from-outlined"
             options={top100Films}
             value={from}
-            getOptionLabel={(option: any) => option.title}
+            getOptionLabel={(option: any) => option.name}
             filterSelectedOptions
             onChange={(event, values) => {
               handleEmailUpdate(nodeId, SEND_EMAIL_CONSTANT.FROM, values);
@@ -164,7 +162,8 @@ const SendEmailOptions = () => {
             renderInput={(params: any) => (
               <TextField
                 {...params}
-                error={errors?.from}
+                isOptionEqualToValue
+                error={errors?.from.length > 0}
                 helperText={errors?.from}
                 className="input-send-email"
                 placeholder="From..."
@@ -235,7 +234,7 @@ const SendEmailOptions = () => {
               id="cc-outlined"
               options={top100Films}
               value={cc}
-              getOptionLabel={(option: any) => option.title}
+              getOptionLabel={(option: any) => option.name}
               filterSelectedOptions
               onChange={(event, values) => {
                 handleEmailUpdate(nodeId, SEND_EMAIL_CONSTANT.CC, values);
@@ -262,7 +261,7 @@ const SendEmailOptions = () => {
               id="cc-outlined"
               options={top100Films}
               value={bcc}
-              getOptionLabel={(option: any) => option.title}
+              getOptionLabel={(option: any) => option.name}
               filterSelectedOptions
               onChange={(event, values) => {
                 handleEmailUpdate(nodeId, SEND_EMAIL_CONSTANT.BCC, values);

@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Box, Button, Checkbox, FormControlLabel, Typography } from "@mui/material"
+import { useParams } from "react-router-dom";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { styled } from "@mui/material/styles";
@@ -7,7 +8,8 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import DoneIcon from '@mui/icons-material/Done';
-
+import apiService from "../../../api/apiService";
+import { useReactFlowContext } from "../../../context/reactFlowContext";
 import './trigger.scss'
 
 const BpIcon = styled("span")(({ theme }) => ({
@@ -45,6 +47,8 @@ const listOptions = ['Select Existing Lists', 'Placement-1', 'Placement-2', 'Pla
 const listSupressOptions = ['Select Lists to Suppress', 'Placement-3', 'Placement-4', 'Placement-5']
 
 const SendTriggerOptions = () => {
+    const params = useParams()
+    const { webid } = params
     const [existingAnchorEl, setExistingAnchorEl] = useState<null | HTMLElement>(null);
     const [supressAnchorEl, setSupressAnchorEl] = useState<null | HTMLElement>(null);
     const [suppressChecked, setSuppressChecked] = useState(false)
@@ -52,7 +56,7 @@ const SendTriggerOptions = () => {
     const [SuppressSelectedLists, setSuppressSelectedLists] = useState<any>([])
     const openExisting = Boolean(existingAnchorEl);
     const openSupress = Boolean(supressAnchorEl);
-
+    const { udpateRightSideBar } = useReactFlowContext();
     const handleExistingClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setExistingAnchorEl(event.currentTarget);
     };
@@ -103,6 +107,20 @@ const SendTriggerOptions = () => {
 
     console.log('existingSelectedLists', existingSelectedLists)
     console.log('SuppressSelectedLists', SuppressSelectedLists)
+
+    const handelSaveUser = async () => {
+        let data = {
+            webflowid: webid,
+            userid: [10, 11, 12, 13, 14]
+        }
+        try {
+            let resp = apiService.assignWebflowUser(data)
+            udpateRightSideBar(false)
+        }
+        catch (e) {
+            console.log(e)
+        }
+    }
     return (
         <div>
             <>
@@ -299,6 +317,7 @@ const SendTriggerOptions = () => {
                 <Button
                     variant="contained"
                     className="save-btn"
+                    onClick={handelSaveUser}
                 >
                     Save
                 </Button>
