@@ -1,0 +1,167 @@
+.question-text {
+    font-size: 14px !important;
+    color: #333333 !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 600 !important;
+    margin-bottom: 10px !important;
+}
+
+.select-container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    //align-items: center !important;
+    margin-bottom: 10px !important;
+}
+
+.new-list-btn {
+    width: 250px !important;
+    font-size: 14px !important;
+    color: #ffffff !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 600 !important;
+    text-transform: capitalize !important;
+    background-color: #146ef6 !important;
+}
+
+.new-list-btn:hover {
+    background-color: #146ef6 !important;
+}
+
+.or-text {
+    font-size: 14px !important;
+    color: #333333 !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 500 !important;
+    padding-left: 125px !important;
+}
+
+.select-list-btn {
+    width: 250px !important;
+    font-size: 14px !important;
+    color: #1a1a1a !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 600 !important;
+    text-transform: capitalize !important;
+    border: 1px solid rgb(192, 192, 192) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0px 8px 0px 8px !important;
+}
+
+.select-list-btn:hover {
+    border: 1px solid #146ef6 !important;
+    color: #146ef6 !important;
+}
+
+.list-btn-icon-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.check-label {
+    font-size: 14px !important;
+    color: #1a1a1a !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 600 !important;
+}
+
+hr {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #f0f0f0;
+}
+
+.inc-exc-text {
+    font-size: 18px !important;
+    color: #1a1a1a !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 600 !important;
+}
+
+.select-list-con {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    padding-bottom: 8px !important;
+}
+
+.list-text {
+    font-size: 14px !important;
+    color: #146ef6 !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 400 !important;
+}
+
+.delete-icon {
+    font-size: 16px !important;
+    color: red !important;
+    padding-left: 8px !important;
+    cursor: pointer !important;
+}
+
+.num-text {
+    font-size: 35px !important;
+    color: #1a1a1a !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 500 !important;
+}
+
+.can-text {
+    font-size: 16px !important;
+    color: #1a1a1a !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 400 !important;
+}
+
+.menu-card {
+    font-size: 16px !important;
+    color: #1a1a1a !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 500 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+}
+
+.btn-con {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-top: 10px !important;
+}
+
+.save-btn {
+    width: 90px !important;
+    font-size: 14px !important;
+    color: #ffffff !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 600 !important;
+    text-transform: capitalize !important;
+    background-color: #146ef6 !important;
+    margin-left: 10px !important;
+}
+
+.save-btn:hover {
+    background-color: #146ef6 !important;
+}
+
+
+.cancel-btn {
+    width: 90px !important;
+    font-size: 14px !important;
+    color: #333333 !important;
+    font-family: 'Segoe UI' !important;
+    font-weight: 600 !important;
+    text-transform: capitalize !important;
+    border: 1px solid rgb(192, 192, 192) !important;
+}
+
+.cancel-btn:hover {
+    border: 1px solid #146ef6 !important;
+    color: #146ef6 !important;
+}

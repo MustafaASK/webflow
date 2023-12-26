@@ -12,6 +12,7 @@ import EndAutomationOptions from "../Nodes/endAutomation/options";
 import SendSurveyOptions from "../Nodes/sendSurvey/options";
 import PathRulesOptions from "../Nodes/pathRules/options";
 import DelayOptions from "../Nodes/delay/options";
+import TriggerOptions from '../Nodes/trigger/options'
 import RightSideBarHeader from "./header";
 import "./rightbar.scss";
 // import NodesJson from "../../../content/nodes.json";
@@ -22,6 +23,7 @@ const RightSideBarWrapper = ({ elementSelected }: { elementSelected: any }) => {
     <RightSideBar>
       <RightSideBarHeader />
       <div className="right-sidebar-wrapper-content-children">
+        {nodeType === NODE_TYPES.TRIGGER && <TriggerOptions />}
         {nodeType === NODE_TYPES.ADD_NOTE && <AddNoteOptions />}
         {nodeType === NODE_TYPES.ADD_TASK && <AddTaskoptions />}
         {nodeType === NODE_TYPES.UPDATE_CANDIDATE && <UpdateCandidateOptions />}

@@ -59,7 +59,7 @@ const ReactFlowWrapper = () => {
     if (
       [
         NODE_TYPES.PATH,
-        NODE_TYPES.TRIGGER,
+
         NODE_TYPES.EMPTY_PATH_BRANCH,
         NODE_TYPES.PATH_BRANCH,
         NODE_TYPES.ADD_STEP_NODE,
@@ -84,6 +84,7 @@ const ReactFlowWrapper = () => {
         NODE_TYPES.QUESTIONNAIRE,
         NODE_TYPES.PATH_RULES,
         NODE_TYPES.DELAY,
+        NODE_TYPES.TRIGGER,
       ].includes(currentElementType)
     ) {
       udpateRightSideBar(true);
