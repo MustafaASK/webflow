@@ -295,15 +295,42 @@
 }
 
 .delete-popup-btn-yes {
-    background-color: #db2a2a !important;
+    color: #ffffff !important;
+    height: 30px !important;
+    background-color: #146EF6 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    font-family: 'Segoe UI' !important;
+    text-transform: capitalize !important;
+    box-shadow: 0 !important;
 }
 
-.delete-popup-btn {
+.delete-popup-btn-yes:hover {
+    color: #ffffff !important;
+    background-color: #0852C2 !important;
+    box-shadow: 0 !important;
+}
+
+/* .delete-popup-btn {
     height: 30px;
     font-family: 'Segoe UI' !important;
     font-size: 14px !important;
-}
+} */
 
 .delete-popup-btn-no {
-    background-color: #146ef6 !important;
+    color: rgba(26, 26, 26, 1) !important;
+    height: 30px !important;
+    border-color: rgba(202, 202, 204, 1) !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    font-family: 'Segoe UI' !important;
+    text-transform: capitalize !important;
+    box-shadow: 0 !important;
+}
+
+.delete-popup-btn-no:hover {
+    color: #146EF6 !important;
+    border-color: #146EF6 !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 !important;
 }

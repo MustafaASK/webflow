@@ -478,7 +478,7 @@ const HomePage = () => {
                                                             </DialogContent>
                                                             <DialogActions className='delete-popup-btn-align'>
                                                                 <Button onClick={() => handleCloseDeletePopup(item.webflowid)}
-                                                                    variant='contained'
+                                                                    variant='outlined'
                                                                     className='delete-popup-btn-no delete-popup-btn'
                                                                 >
                                                                     No
